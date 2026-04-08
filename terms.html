@@ -1,179 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Service — ClientSniper</title>
-<meta name="description" content="ClientSniper Terms of Service. Read the terms and conditions governing your use of our platform.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#030507;--surface:#0a0d10;--surface2:#111519;--border:#1a1e24;
-  --gold:#C9A465;--gold-dim:#8a6d3b;--text:#F0EBE0;--text-dim:#8a8578;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
-}
-html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:var(--sans)}
-body{overflow-x:hidden;background:var(--bg)}
-a{color:inherit;text-decoration:none}
-.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(16px);background:rgba(3,5,7,.75);border-bottom:1px solid rgba(255,255,255,.03)}
-.logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);letter-spacing:1px}
-.logo span{color:var(--text)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);transition:color .2s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{padding:10px 24px;border:1px solid var(--gold);color:var(--gold);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;transition:all .2s}
-.nav-cta:hover{background:var(--gold);color:var(--bg)}
-.legal-hero{padding:160px 40px 60px;text-align:center}
-.legal-hero h1{font-family:var(--serif);font-size:2.8rem;color:var(--gold);margin-bottom:12px}
-.legal-hero p{font-size:.85rem;color:var(--text-dim)}
-.legal-body{max-width:800px;margin:0 auto;padding:0 40px 100px}
-.legal-body h2{font-family:var(--serif);font-size:1.4rem;color:var(--gold);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.legal-body h3{font-size:.95rem;margin:24px 0 8px;color:var(--text)}
-.legal-body p,.legal-body li{font-size:.85rem;color:var(--text-dim);line-height:1.8;margin-bottom:12px}
-.legal-body ul{padding-left:20px;margin-bottom:16px}
-.legal-body ul li{list-style:disc;margin-bottom:6px}
-.legal-body a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
-.footer{border-top:1px solid var(--border);padding:60px 40px 32px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
-.footer-brand{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:12px}
-.footer-brand-text{font-size:.8rem;color:var(--text-dim);line-height:1.7;max-width:300px}
-.footer-social{display:flex;gap:12px;margin-top:16px}
-.footer-social a{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--text-dim);transition:all .2s}
-.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
-.footer-col{display:flex;flex-direction:column;gap:10px}
-.footer-col h4{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.footer-col a{font-size:.8rem;color:var(--text-dim);transition:color .2s}
-.footer-col a:hover{color:var(--gold)}
-.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-dim)}
-@media(max-width:800px){.nav-links{display:none}.footer-grid{grid-template-columns:1fr 1fr}.legal-hero h1{font-size:2rem}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — ClientSniper</title>
+  <meta name="description"
+    content="ClientSniper Terms of Service. Read the terms and conditions governing your use of our platform.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    :root {
+      --bg: #030507;
+      --surface: #0a0d10;
+      --surface2: #111519;
+      --border: #1a1e24;
+      --gold: #C9A465;
+      --gold-dim: #8a6d3b;
+      --text: #F0EBE0;
+      --text-dim: #8a8578;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans)
+    }
+
+    body {
+      overflow-x: hidden;
+      background: var(--bg)
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      background: rgba(3, 5, 7, .75);
+      border-bottom: 1px solid rgba(255, 255, 255, .03)
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px
+    }
+
+    .logo span {
+      color: var(--text)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: .78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color .2s
+    }
+
+    .nav-links a:hover {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all .2s
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--bg)
+    }
+
+    .legal-hero {
+      padding: 160px 40px 60px;
+      text-align: center
+    }
+
+    .legal-hero h1 {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .legal-hero p {
+      font-size: .85rem;
+      color: var(--text-dim)
+    }
+
+    .legal-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 40px 100px
+    }
+
+    .legal-body h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin: 48px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .legal-body h3 {
+      font-size: .95rem;
+      margin: 24px 0 8px;
+      color: var(--text)
+    }
+
+    .legal-body p,
+    .legal-body li {
+      font-size: .85rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 12px
+    }
+
+    .legal-body ul {
+      padding-left: 20px;
+      margin-bottom: 16px
+    }
+
+    .legal-body ul li {
+      list-style: disc;
+      margin-bottom: 6px
+    }
+
+    .legal-body a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 40px 32px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .footer-brand-text {
+      font-size: .8rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 300px
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .footer-social a {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      color: var(--text-dim);
+      transition: all .2s
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold)
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-col h4 {
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px
+    }
+
+    .footer-col a {
+      font-size: .8rem;
+      color: var(--text-dim);
+      transition: color .2s
+    }
+
+    .footer-col a:hover {
+      color: var(--gold)
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: .72rem;
+      color: var(--text-dim)
+    }
+
+    @media(max-width:800px) {
+      .nav-links {
+        display: none
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .legal-hero h1 {
+        font-size: 2rem
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="nav">
-  <a href="index.html" class="logo">Client<span>Sniper</span></a>
-  <div class="nav-links">
-    <a href="index.html#products">Products</a>
-    <a href="features.html">Features</a>
-    <a href="payment.html">Pricing</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="payment.html" class="nav-cta">Start Free Trial</a>
+  <nav class="nav">
+    <a href="index.html" class="logo">Client<span>Sniper</span></a>
+    <div class="nav-links">
+      <a href="index.html#products">Products</a>
+      <a href="features.html">Features</a>
+      <a href="payment.html">Pricing</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="payment.html" class="nav-cta">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <div class="legal-hero">
+    <h1>Terms of Service</h1>
+    <p>Last updated: 28 March 2026</p>
   </div>
-</nav>
 
-<div class="legal-hero">
-  <h1>Terms of Service</h1>
-  <p>Last updated: 28 March 2026</p>
-</div>
+  <div class="legal-body">
 
-<div class="legal-body">
+    <p>These Terms of Service ("Terms") govern your access to and use of ClientSniper's website, products, and services.
+      By using our services, you agree to be bound by these Terms.</p>
 
-<p>These Terms of Service ("Terms") govern your access to and use of ClientSniper's website, products, and services. By using our services, you agree to be bound by these Terms.</p>
+    <h2>1. Acceptance of Terms</h2>
+    <p>By creating an account or using any part of our services, you confirm that you are at least 18 years old and
+      agree to these Terms. If you do not agree, you must not use our services.</p>
 
-<h2>1. Acceptance of Terms</h2>
-<p>By creating an account or using any part of our services, you confirm that you are at least 18 years old and agree to these Terms. If you do not agree, you must not use our services.</p>
+    <h2>2. Account Registration</h2>
+    <p>You must provide accurate, complete information when creating an account. You are responsible for maintaining the
+      confidentiality of your account credentials and for all activity under your account. Notify us immediately at <a
+        href="mailto:support@clientsniper.com">support@clientsniper.com</a> if you suspect unauthorised access.</p>
 
-<h2>2. Account Registration</h2>
-<p>You must provide accurate, complete information when creating an account. You are responsible for maintaining the confidentiality of your account credentials and for all activity under your account. Notify us immediately at <a href="mailto:support@clientsniper.com">support@clientsniper.com</a> if you suspect unauthorised access.</p>
+    <h2>3. Services</h2>
+    <p>ClientSniper provides lead generation tools including Google Maps scraping and Instagram scraping. We grant you a
+      limited, non-exclusive, non-transferable licence to use our platform in accordance with your subscription plan.
+    </p>
 
-<h2>3. Services</h2>
-<p>ClientSniper provides lead generation tools including Google Maps scraping and Instagram scraping. We grant you a limited, non-exclusive, non-transferable licence to use our platform in accordance with your subscription plan.</p>
+    <h2>4. Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use our services for any unlawful purpose or in violation of any applicable laws</li>
+      <li>Scrape data for the purposes of harassment, spam, or unsolicited bulk messaging</li>
+      <li>Attempt to reverse-engineer, decompile, or extract source code from our platform</li>
+      <li>Share, resell, or redistribute your account access to third parties</li>
+      <li>Circumvent any rate limits, access controls, or security features</li>
+      <li>Use the data obtained through our services in a way that violates the privacy rights of individuals</li>
+    </ul>
+    <p>We reserve the right to suspend or terminate your account for violations of these terms.</p>
 
-<h2>4. Acceptable Use</h2>
-<p>You agree not to:</p>
-<ul>
-  <li>Use our services for any unlawful purpose or in violation of any applicable laws</li>
-  <li>Scrape data for the purposes of harassment, spam, or unsolicited bulk messaging</li>
-  <li>Attempt to reverse-engineer, decompile, or extract source code from our platform</li>
-  <li>Share, resell, or redistribute your account access to third parties</li>
-  <li>Circumvent any rate limits, access controls, or security features</li>
-  <li>Use the data obtained through our services in a way that violates the privacy rights of individuals</li>
-</ul>
-<p>We reserve the right to suspend or terminate your account for violations of these terms.</p>
+    <h2>5. Subscriptions &amp; Billing</h2>
+    <h3>Plans</h3>
+    <p>We offer monthly and yearly subscription plans. Plan details and pricing are listed on our <a
+        href="payment.html">Pricing page</a>.</p>
+    <h3>Free Trial</h3>
+    <p>New users receive a 30-day free trial. Your chosen plan begins automatically after the trial period unless you
+      cancel before the trial ends.</p>
+    <h3>Billing</h3>
+    <p>Payments are processed through Stripe. By subscribing, you authorise us to charge your payment method on a
+      recurring basis. Yearly plans are billed annually.</p>
+    <h3>Cancellation</h3>
+    <p>You may cancel your subscription at any time through your account settings. Cancellation takes effect at the end
+      of the current billing period. No refunds are provided for partial billing periods.</p>
 
-<h2>5. Subscriptions &amp; Billing</h2>
-<h3>Plans</h3>
-<p>We offer monthly and yearly subscription plans. Plan details and pricing are listed on our <a href="payment.html">Pricing page</a>.</p>
-<h3>Free Trial</h3>
-<p>New users receive a 30-day free trial. Your chosen plan begins automatically after the trial period unless you cancel before the trial ends.</p>
-<h3>Billing</h3>
-<p>Payments are processed through Stripe. By subscribing, you authorise us to charge your payment method on a recurring basis. Yearly plans are billed annually.</p>
-<h3>Cancellation</h3>
-<p>You may cancel your subscription at any time through your account settings. Cancellation takes effect at the end of the current billing period. No refunds are provided for partial billing periods.</p>
+    <h2>6. Intellectual Property</h2>
+    <p>All content, code, design, trademarks, and other intellectual property on the ClientSniper platform belong to
+      ClientSniper Ltd. You may not copy, modify, distribute, or create derivative works from our platform.</p>
 
-<h2>6. Intellectual Property</h2>
-<p>All content, code, design, trademarks, and other intellectual property on the ClientSniper platform belong to ClientSniper Ltd. You may not copy, modify, distribute, or create derivative works from our platform.</p>
+    <h2>7. Data &amp; Privacy</h2>
+    <p>Your use of our services is also governed by our <a href="privacy.html">Privacy Policy</a>. You are responsible
+      for ensuring that your use of data obtained through our tools complies with applicable data protection laws,
+      including UK GDPR.</p>
 
-<h2>7. Data &amp; Privacy</h2>
-<p>Your use of our services is also governed by our <a href="privacy.html">Privacy Policy</a>. You are responsible for ensuring that your use of data obtained through our tools complies with applicable data protection laws, including UK GDPR.</p>
+    <h2>8. Disclaimers</h2>
+    <p>Our services are provided "as is" and "as available" without warranties of any kind, whether express or implied.
+      We do not guarantee that:</p>
+    <ul>
+      <li>Our services will be uninterrupted, error-free, or secure</li>
+      <li>Data obtained through our tools will be 100% accurate or current</li>
+      <li>Our tools will meet your specific requirements</li>
+    </ul>
 
-<h2>8. Disclaimers</h2>
-<p>Our services are provided "as is" and "as available" without warranties of any kind, whether express or implied. We do not guarantee that:</p>
-<ul>
-  <li>Our services will be uninterrupted, error-free, or secure</li>
-  <li>Data obtained through our tools will be 100% accurate or current</li>
-  <li>Our tools will meet your specific requirements</li>
-</ul>
+    <h2>9. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, ClientSniper shall not be liable for any indirect, incidental, special,
+      consequential, or punitive damages, including loss of profits, data, or business opportunities, arising from your
+      use of our services.</p>
 
-<h2>9. Limitation of Liability</h2>
-<p>To the maximum extent permitted by law, ClientSniper shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or business opportunities, arising from your use of our services.</p>
+    <h2>10. Changes to Terms</h2>
+    <p>We may modify these Terms at any time. We will notify you of material changes by posting the updated Terms and
+      changing the "Last updated" date. Continued use after changes constitutes acceptance.</p>
 
-<h2>10. Changes to Terms</h2>
-<p>We may modify these Terms at any time. We will notify you of material changes by posting the updated Terms and changing the "Last updated" date. Continued use after changes constitutes acceptance.</p>
+    <h2>11. Governing Law</h2>
+    <p>These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive
+      jurisdiction of the courts of England and Wales.</p>
 
-<h2>11. Governing Law</h2>
-<p>These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+    <h2>12. Contact</h2>
+    <p>For questions about these Terms, contact us at:</p>
+    <p><strong>Email:</strong> <a href="mailto:legal@clientsniper.com">legal@clientsniper.com</a><br>
+      <strong>Address:</strong> ClientSniper Ltd, United Kingdom
+    </p>
 
-<h2>12. Contact</h2>
-<p>For questions about these Terms, contact us at:</p>
-<p><strong>Email:</strong> <a href="mailto:legal@clientsniper.com">legal@clientsniper.com</a><br>
-<strong>Address:</strong> ClientSniper Ltd, United Kingdom</p>
+  </div>
 
-</div>
-
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
-      <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google Maps &amp; Instagram in minutes.</p>
-      <div class="footer-social">
-        <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
-        <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
-        <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-        <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
+        <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google
+          Maps &amp; Instagram in minutes.</p>
+        <div class="footer-social">
+          <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
+          <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
+          <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+            </svg></a>
+          <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="index.html#products">Google Maps Scraper</a>
+        <a href="index.html#insta-preview">Instagram Scraper</a>
+        <a href="features.html">All Features</a>
+        <a href="payment.html">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#blog">Blog</a>
+        <a href="index.html#forum">Forum</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="help.html">Help Centre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="index.html#products">Google Maps Scraper</a>
-      <a href="index.html#insta-preview">Instagram Scraper</a>
-      <a href="features.html">All Features</a>
-      <a href="payment.html">Pricing</a>
+    <div class="footer-bottom">
+      <span>&copy; 2025 ClientSniper. All rights reserved.</span>
+      <span>Built with precision. 🎯</span>
     </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="index.html#about">About Us</a>
-      <a href="index.html#blog">Blog</a>
-      <a href="index.html#forum">Forum</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="help.html">Help Centre</a>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="cookies.html">Cookie Policy</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2025 ClientSniper. All rights reserved.</span>
-    <span>Built with precision. 🎯</span>
-  </div>
-</footer>
+  </footer>
 
 </body>
+
 </html>

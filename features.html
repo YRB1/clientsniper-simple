@@ -1,626 +1,1461 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Features — ClientSniper</title>
-<meta name="description" content="Explore every feature of ClientSniper's Google Maps Scraper, Instagram Lead Scraper, and AI Website Generator.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#030507;--surface:#0a0d10;--surface2:#111519;--border:#1a1e24;
-  --gold:#C9A465;--gold-dim:#8a6d3b;--text:#F0EBE0;--text-dim:#8a8578;
-  --maps:#2DBD6E;--insta1:#833AB4;--insta2:#E1306C;--ai:#A259FF;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
-}
-html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:var(--sans)}
-body{overflow-x:hidden;background:var(--bg)}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-ul{list-style:none}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features — ClientSniper</title>
+  <meta name="description"
+    content="Explore every feature of ClientSniper's Google Maps Scraper, Instagram Lead Scraper, and AI Website Generator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-/* ───── CURSOR ───── */
-.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(201,164,101,.4);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
-.cursor-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
-.cursor-ring.hover{width:52px;height:52px;border-color:var(--gold)}
-@media(pointer:coarse){.cursor-ring,.cursor-dot{display:none}}
+    :root {
+      --bg: #030507;
+      --surface: #0a0d10;
+      --surface2: #111519;
+      --border: #1a1e24;
+      --gold: #C9A465;
+      --gold-dim: #8a6d3b;
+      --text: #F0EBE0;
+      --text-dim: #8a8578;
+      --maps: #2DBD6E;
+      --insta1: #833AB4;
+      --insta2: #E1306C;
+      --ai: #A259FF;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+    }
 
-/* ───── NAV ───── */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:20px 40px;display:flex;align-items:center;justify-content:space-between;
-  background:rgba(3,5,7,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,164,101,.06);
-}
-.nav-logo{font-family:var(--serif);font-size:1.4rem;color:var(--gold);letter-spacing:2px;font-weight:600}
-.nav-logo span{color:var(--text)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);transition:color .3s}
-.nav-links a:hover,.nav-links a.active{color:var(--gold)}
-.nav-cta{padding:10px 28px;border:1px solid var(--gold);color:var(--gold);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;transition:background .3s,color .3s}
-.nav-cta:hover{background:var(--gold);color:var(--bg)}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
-.burger span{width:24px;height:1.5px;background:var(--text);transition:transform .3s,opacity .3s}
-.burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
-.mobile-drawer{position:fixed;inset:0;z-index:999;background:rgba(3,5,7,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
-.mobile-drawer.open{opacity:1;visibility:visible}
-.mobile-drawer a{font-size:1.2rem;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;transition:color .3s}
-.mobile-drawer a:hover{color:var(--gold)}
-@media(max-width:900px){.nav-links,.nav-cta{display:none}.burger{display:flex}}
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans)
+    }
 
-/* ───── HERO BANNER ───── */
-.page-hero{
-  padding:160px 24px 100px;text-align:center;position:relative;
-  background:linear-gradient(180deg,rgba(201,164,101,.03) 0%,transparent 60%);
-}
-.page-hero .tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.page-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;margin-bottom:16px;line-height:1.1}
-.page-hero h1 .outline{-webkit-text-stroke:1.5px var(--gold);color:transparent}
-.page-hero p{color:var(--text-dim);max-width:600px;margin:0 auto;line-height:1.7;font-size:1rem}
+    body {
+      overflow-x: hidden;
+      background: var(--bg)
+    }
 
-/* ───── SHARED ───── */
-.section{padding:100px 24px;position:relative}
-.container{max-width:1200px;margin:0 auto}
-.section-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.section-title{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;margin-bottom:16px}
-.section-sub{color:var(--text-dim);max-width:560px;line-height:1.7;font-size:.95rem}
-.btn-primary{display:inline-block;padding:16px 40px;background:var(--gold);color:var(--bg);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:transform .2s,box-shadow .2s}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,164,101,.25)}
-.btn-secondary{display:inline-block;padding:16px 40px;border:1px solid var(--border);color:var(--text-dim);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;transition:border-color .3s,color .3s}
-.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+    a {
+      color: inherit;
+      text-decoration: none
+    }
 
-/* ───── FEATURE OVERVIEW GRID ───── */
-.feat-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
-.feat-overview-card{
-  background:var(--surface);border:1px solid var(--border);padding:40px 28px;
-  text-align:center;transition:border-color .3s,transform .3s;
-}
-.feat-overview-card:hover{border-color:var(--gold);transform:translateY(-4px)}
-.feat-overview-card .icon{font-size:2.4rem;margin-bottom:20px}
-.feat-overview-card h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:10px}
-.feat-overview-card p{color:var(--text-dim);font-size:.85rem;line-height:1.7}
-@media(max-width:800px){.feat-overview{grid-template-columns:1fr}}
+    img {
+      max-width: 100%;
+      display: block
+    }
 
-/* ───── FEATURE DEEP DIVE ───── */
-.deep-dive{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:80px;padding-top:80px;border-top:1px solid var(--border)}
-.deep-dive.reverse{direction:rtl}
-.deep-dive.reverse > *{direction:ltr}
-.dd-content .dd-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
-.dd-content .maps-color{color:var(--maps)}
-.dd-content .insta-color{color:var(--insta2)}
-.dd-content .ai-color{color:var(--ai)}
-.dd-content .crm-color{color:var(--gold)}
-.dd-content h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:16px}
-.dd-content p{color:var(--text-dim);line-height:1.7;margin-bottom:24px}
-.dd-features{display:flex;flex-direction:column;gap:16px}
-.dd-feature{display:flex;gap:14px;align-items:flex-start}
-.dd-feature .check{color:var(--gold);font-weight:700;font-size:1.1rem;line-height:1.4}
-.dd-feature div{flex:1}
-.dd-feature strong{display:block;font-size:.9rem;margin-bottom:2px;color:var(--text)}
-.dd-feature span{font-size:.82rem;color:var(--text-dim);line-height:1.6}
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none
+    }
 
-.dd-visual{
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:32px;min-height:380px;
-}
-.dd-visual .mockup-header{display:flex;align-items:center;gap:8px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--border)}
-.mockup-dot.green{background:var(--maps)}
-.mockup-dot.yellow{background:var(--gold)}
-.mockup-dot.red{background:var(--insta2)}
-.mockup-title{font-size:.75rem;color:var(--text-dim);margin-left:12px}
-.dd-visual .data-row{
-  display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);
-  font-size:.82rem;color:var(--text-dim);
-}
-.dd-visual .data-row .name{color:var(--text)}
-.dd-visual .data-row .badge{padding:3px 10px;border-radius:10px;font-size:.7rem}
-.badge-maps{background:rgba(45,189,110,.1);color:var(--maps)}
-.badge-insta{background:rgba(225,48,108,.1);color:var(--insta2)}
-.badge-ai{background:rgba(162,89,255,.1);color:var(--ai)}
-.badge-gold{background:rgba(201,164,101,.1);color:var(--gold)}
+    ul {
+      list-style: none
+    }
 
-/* Stats bar inside mockup */
-.mockup-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-.mockup-stat{text-align:center;padding:16px;background:var(--surface2);border-radius:8px}
-.mockup-stat .stat-num{font-family:var(--serif);font-size:1.6rem;color:var(--gold)}
-.mockup-stat .stat-label{font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+    /* ───── CURSOR ───── */
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(201, 164, 101, .4);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s, border-color .2s
+    }
 
-@media(max-width:800px){
-  .deep-dive,.deep-dive.reverse{grid-template-columns:1fr;direction:ltr}
-  .deep-dive.reverse > *{direction:ltr}
-  .dd-visual{order:-1}
-}
+    .cursor-dot {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%)
+    }
 
-/* ───── COMPARISON TABLE ───── */
-.compare-table{margin-top:56px;overflow-x:auto}
-.compare-table table{width:100%;border-collapse:collapse;min-width:600px}
-.compare-table th{
-  font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
-  padding:16px 20px;text-align:left;border-bottom:1px solid var(--border);
-}
-.compare-table th:not(:first-child){text-align:center}
-.compare-table td{
-  padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem;
-  color:var(--text-dim);
-}
-.compare-table td:not(:first-child){text-align:center}
-.compare-table .yes{color:var(--gold);font-weight:700}
-.compare-table .no{color:var(--text-dim);opacity:.3}
-.compare-table tr:hover{background:rgba(201,164,101,.02)}
+    .cursor-ring.hover {
+      width: 52px;
+      height: 52px;
+      border-color: var(--gold)
+    }
 
-/* ───── INTEGRATIONS ───── */
-.integrations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:56px}
-.integ-card{
-  background:var(--surface);border:1px solid var(--border);padding:32px 20px;
-  text-align:center;transition:border-color .3s;
-}
-.integ-card:hover{border-color:var(--gold)}
-.integ-card .integ-icon{font-size:2rem;margin-bottom:12px}
-.integ-card h4{font-size:.85rem;color:var(--text);margin-bottom:4px}
-.integ-card p{font-size:.72rem;color:var(--text-dim)}
+    @media(pointer:coarse) {
 
-/* ───── CTA BANNER ───── */
-.cta-banner{
-  text-align:center;padding:100px 24px;
-  background:linear-gradient(180deg,transparent 0%,rgba(201,164,101,.03) 50%,transparent 100%);
-}
-.cta-banner h2{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.8rem);margin-bottom:16px}
-.cta-banner p{color:var(--text-dim);max-width:480px;margin:0 auto 32px;line-height:1.7}
-.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+      .cursor-ring,
+      .cursor-dot {
+        display: none
+      }
+    }
 
-/* ───── FOOTER ───── */
-.footer{padding:80px 24px 40px;border-top:1px solid var(--border)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto}
-.footer-brand{font-family:var(--serif);font-size:1.4rem;color:var(--gold);margin-bottom:16px}
-.footer-brand-text{color:var(--text-dim);font-size:.85rem;line-height:1.7;max-width:280px}
-.footer-col h4{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.footer-col a{display:block;font-size:.85rem;color:var(--text-dim);margin-bottom:10px;transition:color .3s}
-.footer-col a:hover{color:var(--gold)}
-.footer-social{display:flex;gap:16px;margin-top:20px}
-.footer-social a{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--text-dim);transition:border-color .3s,color .3s}
-.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
-.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-dim)}
-@media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
+    /* ───── NAV ───── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(3, 5, 7, .85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 164, 101, .06);
+    }
 
-/* ───── REVEAL ───── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-</style>
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-weight: 600
+    }
+
+    .nav-logo span {
+      color: var(--text)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: .78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color .3s
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      padding: 10px 28px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: background .3s, color .3s
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--bg)
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001
+    }
+
+    .burger span {
+      width: 24px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform .3s, opacity .3s
+    }
+
+    .burger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 4px)
+    }
+
+    .burger.open span:nth-child(2) {
+      opacity: 0
+    }
+
+    .burger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -4px)
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(3, 5, 7, .97);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s, visibility .3s
+    }
+
+    .mobile-drawer.open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    .mobile-drawer a {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color .3s
+    }
+
+    .mobile-drawer a:hover {
+      color: var(--gold)
+    }
+
+    @media(max-width:900px) {
+
+      .nav-links,
+      .nav-cta {
+        display: none
+      }
+
+      .burger {
+        display: flex
+      }
+    }
+
+    /* ───── HERO BANNER ───── */
+    .page-hero {
+      padding: 160px 24px 100px;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(180deg, rgba(201, 164, 101, .03) 0%, transparent 60%);
+    }
+
+    .page-hero .tag {
+      font-size: .7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .page-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.1
+    }
+
+    .page-hero h1 .outline {
+      -webkit-text-stroke: 1.5px var(--gold);
+      color: transparent
+    }
+
+    .page-hero p {
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 1rem
+    }
+
+    /* ───── SHARED ───── */
+    .section {
+      padding: 100px 24px;
+      position: relative
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .section-tag {
+      font-size: .7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      margin-bottom: 16px
+    }
+
+    .section-sub {
+      color: var(--text-dim);
+      max-width: 560px;
+      line-height: 1.7;
+      font-size: .95rem
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--gold);
+      color: var(--bg);
+      font-size: .8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201, 164, 101, .25)
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 16px 40px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: .8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: border-color .3s, color .3s
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold)
+    }
+
+    /* ───── FEATURE OVERVIEW GRID ───── */
+    .feat-overview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px
+    }
+
+    .feat-overview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 40px 28px;
+      text-align: center;
+      transition: border-color .3s, transform .3s;
+    }
+
+    .feat-overview-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px)
+    }
+
+    .feat-overview-card .icon {
+      font-size: 2.4rem;
+      margin-bottom: 20px
+    }
+
+    .feat-overview-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 10px
+    }
+
+    .feat-overview-card p {
+      color: var(--text-dim);
+      font-size: .85rem;
+      line-height: 1.7
+    }
+
+    @media(max-width:800px) {
+      .feat-overview {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ───── FEATURE DEEP DIVE ───── */
+    .deep-dive {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 80px;
+      padding-top: 80px;
+      border-top: 1px solid var(--border)
+    }
+
+    .deep-dive.reverse {
+      direction: rtl
+    }
+
+    .deep-dive.reverse>* {
+      direction: ltr
+    }
+
+    .dd-content .dd-tag {
+      font-size: .7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px
+    }
+
+    .dd-content .maps-color {
+      color: var(--maps)
+    }
+
+    .dd-content .insta-color {
+      color: var(--insta2)
+    }
+
+    .dd-content .ai-color {
+      color: var(--ai)
+    }
+
+    .dd-content .crm-color {
+      color: var(--gold)
+    }
+
+    .dd-content h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 16px
+    }
+
+    .dd-content p {
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 24px
+    }
+
+    .dd-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px
+    }
+
+    .dd-feature {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start
+    }
+
+    .dd-feature .check {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.4
+    }
+
+    .dd-feature div {
+      flex: 1
+    }
+
+    .dd-feature strong {
+      display: block;
+      font-size: .9rem;
+      margin-bottom: 2px;
+      color: var(--text)
+    }
+
+    .dd-feature span {
+      font-size: .82rem;
+      color: var(--text-dim);
+      line-height: 1.6
+    }
+
+    .dd-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      min-height: 380px;
+    }
+
+    .dd-visual .mockup-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .mockup-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border)
+    }
+
+    .mockup-dot.green {
+      background: var(--maps)
+    }
+
+    .mockup-dot.yellow {
+      background: var(--gold)
+    }
+
+    .mockup-dot.red {
+      background: var(--insta2)
+    }
+
+    .mockup-title {
+      font-size: .75rem;
+      color: var(--text-dim);
+      margin-left: 12px
+    }
+
+    .dd-visual .data-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+      font-size: .82rem;
+      color: var(--text-dim);
+    }
+
+    .dd-visual .data-row .name {
+      color: var(--text)
+    }
+
+    .dd-visual .data-row .badge {
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-size: .7rem
+    }
+
+    .badge-maps {
+      background: rgba(45, 189, 110, .1);
+      color: var(--maps)
+    }
+
+    .badge-insta {
+      background: rgba(225, 48, 108, .1);
+      color: var(--insta2)
+    }
+
+    .badge-ai {
+      background: rgba(162, 89, 255, .1);
+      color: var(--ai)
+    }
+
+    .badge-gold {
+      background: rgba(201, 164, 101, .1);
+      color: var(--gold)
+    }
+
+    /* Stats bar inside mockup */
+    .mockup-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px
+    }
+
+    .mockup-stat {
+      text-align: center;
+      padding: 16px;
+      background: var(--surface2);
+      border-radius: 8px
+    }
+
+    .mockup-stat .stat-num {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--gold)
+    }
+
+    .mockup-stat .stat-label {
+      font-size: .65rem;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px
+    }
+
+    @media(max-width:800px) {
+
+      .deep-dive,
+      .deep-dive.reverse {
+        grid-template-columns: 1fr;
+        direction: ltr
+      }
+
+      .deep-dive.reverse>* {
+        direction: ltr
+      }
+
+      .dd-visual {
+        order: -1
+      }
+    }
+
+    /* ───── COMPARISON TABLE ───── */
+    .compare-table {
+      margin-top: 56px;
+      overflow-x: auto
+    }
+
+    .compare-table table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px
+    }
+
+    .compare-table th {
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table th:not(:first-child) {
+      text-align: center
+    }
+
+    .compare-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+      font-size: .88rem;
+      color: var(--text-dim);
+    }
+
+    .compare-table td:not(:first-child) {
+      text-align: center
+    }
+
+    .compare-table .yes {
+      color: var(--gold);
+      font-weight: 700
+    }
+
+    .compare-table .no {
+      color: var(--text-dim);
+      opacity: .3
+    }
+
+    .compare-table tr:hover {
+      background: rgba(201, 164, 101, .02)
+    }
+
+    /* ───── INTEGRATIONS ───── */
+    .integrations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 56px
+    }
+
+    .integ-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px 20px;
+      text-align: center;
+      transition: border-color .3s;
+    }
+
+    .integ-card:hover {
+      border-color: var(--gold)
+    }
+
+    .integ-card .integ-icon {
+      font-size: 2rem;
+      margin-bottom: 12px
+    }
+
+    .integ-card h4 {
+      font-size: .85rem;
+      color: var(--text);
+      margin-bottom: 4px
+    }
+
+    .integ-card p {
+      font-size: .72rem;
+      color: var(--text-dim)
+    }
+
+    /* ───── CTA BANNER ───── */
+    .cta-banner {
+      text-align: center;
+      padding: 100px 24px;
+      background: linear-gradient(180deg, transparent 0%, rgba(201, 164, 101, .03) 50%, transparent 100%);
+    }
+
+    .cta-banner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      margin-bottom: 16px
+    }
+
+    .cta-banner p {
+      color: var(--text-dim);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.7
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    /* ───── FOOTER ───── */
+    .footer {
+      padding: 80px 24px 40px;
+      border-top: 1px solid var(--border)
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 16px
+    }
+
+    .footer-brand-text {
+      color: var(--text-dim);
+      font-size: .85rem;
+      line-height: 1.7;
+      max-width: 280px
+    }
+
+    .footer-col h4 {
+      font-size: .72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: .85rem;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+      transition: color .3s
+    }
+
+    .footer-col a:hover {
+      color: var(--gold)
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      color: var(--text-dim);
+      transition: border-color .3s, color .3s
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold)
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: .75rem;
+      color: var(--text-dim)
+    }
+
+    @media(max-width:800px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:500px) {
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ───── REVEAL ───── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s, transform .7s
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- CURSOR -->
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="cursor-dot" id="cursorDot"></div>
+  <!-- CURSOR -->
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">Client<span>Sniper</span></a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="features.html" class="active">Features</a>
-    <a href="payment.html">Plans</a>
-    <a href="index.html#faq">FAQ</a>
-    <a href="index.html#contact">Contact</a>
-  </div>
-  <a href="payment.html" class="nav-cta">Get Started</a>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
-</nav>
-<div class="mobile-drawer" id="drawer">
-  <a href="index.html" onclick="closeDrawer()">Home</a>
-  <a href="features.html" onclick="closeDrawer()">Features</a>
-  <a href="payment.html" onclick="closeDrawer()">Plans</a>
-  <a href="index.html#faq" onclick="closeDrawer()">FAQ</a>
-  <a href="index.html#contact" onclick="closeDrawer()">Contact</a>
-  <a href="payment.html" class="nav-cta" onclick="closeDrawer()">Get Started</a>
-</div>
-
-<!-- ════════ HERO ════════ -->
-<section class="page-hero">
-  <div class="tag">Feature Deep Dive</div>
-  <h1>Every Tool You Need.<br><span class="outline">Nothing You Don't.</span></h1>
-  <p>Six powerful features designed to turn any search into a pipeline of verified, ready-to-action leads. No fluff. No gimmicks. Just results.</p>
-</section>
-
-<!-- ════════ OVERVIEW GRID ════════ -->
-<section class="section">
-  <div class="container">
-    <div class="feat-overview reveal">
-      <div class="feat-overview-card">
-        <div class="icon">📍</div>
-        <h3>Google Maps Scraper</h3>
-        <p>Scrape verified business data — names, emails, phones, ratings — from any Google Maps search in any city worldwide.</p>
-      </div>
-      <div class="feat-overview-card">
-        <div class="icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--insta2)"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
-        <h3>Instagram Lead Scraper</h3>
-        <p>Extract bio emails, follower counts, engagement metrics and more from public profiles, hashtags and competitor accounts.</p>
-      </div>
-      <div class="feat-overview-card">
-        <div class="icon">🤖</div>
-        <h3>AI Website Generator</h3>
-        <p>Auto-generate a professional website mockup for any lead. Show prospects what you'd build — close deals faster.</p>
-      </div>
-      <div class="feat-overview-card">
-        <div class="icon">📊</div>
-        <h3>CRM &amp; Pipeline</h3>
-        <p>Organize, tag and track every lead through your sales pipeline with our built-in lightweight CRM.</p>
-      </div>
-      <div class="feat-overview-card">
-        <div class="icon">⚡</div>
-        <h3>Automation &amp; Integrations</h3>
-        <p>Connect to Zapier, HubSpot, Mailchimp and more. Automate your outreach from scrape to sequence.</p>
-      </div>
-      <div class="feat-overview-card">
-        <div class="icon">🚀</div>
-        <h3>5-Minute Setup</h3>
-        <p>No code, no complex config. Pick a scraper, enter your search, and start pulling leads immediately.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ DEEP DIVE: GOOGLE MAPS ════════ -->
-<section class="section" id="maps-feature">
-  <div class="container">
-    <div class="deep-dive reveal">
-      <div class="dd-content">
-        <div class="dd-tag maps-color">Google Maps Scraper</div>
-        <h2>Turn Map Searches Into<br>Revenue Pipelines</h2>
-        <p>Every Google Maps listing is a potential client. Our scraper pulls verified contact data — name, phone, email, website, rating, review count — from any Maps search in any city.</p>
-        <div class="dd-features">
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Unlimited Location Searches</strong><span>Target any city, state or country. Drill down to specific neighbourhoods or go broad — your choice.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Email &amp; Phone Extraction</strong><span>Automatically extract publicly listed emails and phone numbers. Verified in real-time before they hit your export.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Smart Filtering</strong><span>Filter results by minimum rating, review count, business type, and open status to find only high-quality prospects.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Batch Scraping</strong><span>Queue up to 1,000 results per search. Run multiple searches overnight and wake up to a full pipeline.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>One-Click Export</strong><span>Export to CSV, Excel or push directly to HubSpot, Salesforce and Pipedrive with native integrations.</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="mockup-header">
-          <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
-          <span class="mockup-title">Maps Scraper — "Dentists in Manchester"</span>
-        </div>
-        <div class="data-row"><span class="name">Apex Dental Clinic</span><span class="badge badge-maps">✓ Verified</span></div>
-        <div class="data-row"><span class="name">Bright Smiles Orthodontics</span><span class="badge badge-maps">✓ Verified</span></div>
-        <div class="data-row"><span class="name">CityDent Manchester</span><span class="badge badge-maps">✓ Verified</span></div>
-        <div class="data-row"><span class="name">Dr. Patel's Family Dental</span><span class="badge badge-maps">✓ Verified</span></div>
-        <div class="data-row"><span class="name">Smile Hub Deansgate</span><span class="badge badge-maps">✓ Verified</span></div>
-        <div class="data-row"><span class="name">Northern Quarter Dentistry</span><span class="badge badge-maps">⏳ Checking</span></div>
-        <div class="mockup-stats">
-          <div class="mockup-stat"><div class="stat-num">247</div><div class="stat-label">Results</div></div>
-          <div class="mockup-stat"><div class="stat-num">98%</div><div class="stat-label">Verified</div></div>
-          <div class="mockup-stat"><div class="stat-num">4.6★</div><div class="stat-label">Avg Rating</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ DEEP DIVE: INSTAGRAM ════════ -->
-<section class="section" id="insta-feature">
-  <div class="container">
-    <div class="deep-dive reverse reveal">
-      <div class="dd-content">
-        <div class="dd-tag insta-color">Instagram Lead Scraper</div>
-        <h2>Mine Instagram For<br>High-Intent Leads</h2>
-        <p>Tap into Instagram's massive business audience. Scrape bio data, emails, follower counts, engagement rates and more from profiles, hashtags and competitor followings.</p>
-        <div class="dd-features">
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Profile &amp; Hashtag Scraping</strong><span>Scrape any public profile or hashtag. Build niche-targeted lead lists from the exact audiences you want.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Bio Email Extraction</strong><span>Automatically pull email addresses from Instagram bios — the #1 untapped lead source for B2C businesses.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Engagement Analytics</strong><span>See follower count, average likes, engagement rate and posting frequency to qualify leads before outreach.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Competitor Follower Scraping</strong><span>Scrape followers of any competitor or industry account. These people already want what you're selling.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Bulk Export &amp; CRM Sync</strong><span>Export thousands of leads to CSV or sync directly with your favourite CRM tools in one click.</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="mockup-header">
-          <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
-          <span class="mockup-title">Instagram Scraper — #fitnesscoach</span>
-        </div>
-        <div class="data-row"><span class="name">@studio.bloom</span><span class="badge badge-insta">12.4k</span></div>
-        <div class="data-row"><span class="name">@thefitcoach_</span><span class="badge badge-insta">8.7k</span></div>
-        <div class="data-row"><span class="name">@coastal.eats</span><span class="badge badge-insta">23.1k</span></div>
-        <div class="data-row"><span class="name">@luxe.interiors</span><span class="badge badge-insta">15.9k</span></div>
-        <div class="data-row"><span class="name">@pawsandclaws.uk</span><span class="badge badge-insta">6.2k</span></div>
-        <div class="data-row"><span class="name">@neonbarber</span><span class="badge badge-insta">4.8k</span></div>
-        <div class="mockup-stats">
-          <div class="mockup-stat"><div class="stat-num">184</div><div class="stat-label">Profiles</div></div>
-          <div class="mockup-stat"><div class="stat-num">73%</div><div class="stat-label">Has Email</div></div>
-          <div class="mockup-stat"><div class="stat-num">3.8%</div><div class="stat-label">Avg Engage</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ DEEP DIVE: AI WEBSITE GENERATOR ════════ -->
-<section class="section" id="ai-feature">
-  <div class="container">
-    <div class="deep-dive reveal">
-      <div class="dd-content">
-        <div class="dd-tag ai-color">AI Website Generator · Beta</div>
-        <h2>Show Prospects What<br>You'll Build For Them</h2>
-        <p>Our AI analyses scraped lead data — business name, niche, reviews — and automatically generates a professional website mockup. Send it to prospects and watch conversion rates soar.</p>
-        <div class="dd-features">
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>One-Click Generation</strong><span>Select any scraped lead and click "Generate Website". The AI builds a full-page mockup in seconds.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Niche-Aware Design</strong><span>The AI tailors design, copy and imagery to match the lead's industry — dental, fitness, restaurant, and more.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Shareable Preview Link</strong><span>Get a hosted URL you can send directly to the prospect. They see their new site before you even pitch.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Template Library</strong><span>Choose from 20+ industry templates or let the AI pick the best match automatically.</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="mockup-header">
-          <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
-          <span class="mockup-title">AI Preview — Apex Dental Clinic</span>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px">
-          <div style="padding:20px;background:var(--surface2);border-radius:8px">
-            <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Hero Section</h4>
-            <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">Your smile deserves the best. Book at Apex Dental today — 2,400+ happy patients.</p>
-          </div>
-          <div style="padding:20px;background:var(--surface2);border-radius:8px">
-            <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Services</h4>
-            <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">Whitening · Invisalign · Implants · Emergency · Paediatric Care</p>
-          </div>
-          <div style="padding:20px;background:var(--surface2);border-radius:8px">
-            <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Reviews</h4>
-            <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">"Best clinic in Manchester" — Sarah M. ★★★★★</p>
-          </div>
-          <div style="padding:20px;background:var(--surface2);border-radius:8px">
-            <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Contact</h4>
-            <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">📍 14 King St · ☎ 0161 XXX · Online booking</p>
-          </div>
-        </div>
-        <div style="margin-top:16px;text-align:center;padding:12px;background:rgba(162,89,255,.06);border:1px solid rgba(162,89,255,.15);border-radius:8px">
-          <span style="color:var(--ai);font-size:.75rem;letter-spacing:1px">✨ AI-GENERATED IN 4.2 SECONDS</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ DEEP DIVE: CRM ════════ -->
-<section class="section" id="crm-feature">
-  <div class="container">
-    <div class="deep-dive reverse reveal">
-      <div class="dd-content">
-        <div class="dd-tag crm-color">CRM &amp; Pipeline</div>
-        <h2>From Scrape to Close.<br>All in One Place.</h2>
-        <p>Don't export leads to a dead spreadsheet. Our built-in CRM lets you organise, tag and track every prospect through your sales pipeline without leaving ClientSniper.</p>
-        <div class="dd-features">
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Drag &amp; Drop Pipeline</strong><span>Move leads through stages — New, Contacted, Qualified, Proposal, Closed — with a simple drag and drop interface.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Custom Tags &amp; Filters</strong><span>Tag leads by niche, location, priority or any custom label. Filter instantly to find exactly who you need.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Activity Timeline</strong><span>See every interaction — scrape date, emails sent, notes added — in a chronological timeline per lead.</span></div>
-          </div>
-          <div class="dd-feature">
-            <span class="check">✓</span>
-            <div><strong>Revenue Tracking</strong><span>Assign deal values and track your projected and actual revenue by month, quarter or year.</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="mockup-header">
-          <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
-          <span class="mockup-title">CRM Pipeline — This Week</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">
-          <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
-            <div style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">New</div>
-            <div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">24</div>
-          </div>
-          <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
-            <div style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Contacted</div>
-            <div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">18</div>
-          </div>
-          <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
-            <div style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Proposal</div>
-            <div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">7</div>
-          </div>
-          <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
-            <div style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Closed</div>
-            <div style="font-family:var(--serif);font-size:1.4rem;color:var(--maps)">5</div>
-          </div>
-        </div>
-        <div style="margin-top:16px">
-          <div class="data-row"><span class="name">Apex Dental</span><span class="badge badge-gold">£2,400</span></div>
-          <div class="data-row"><span class="name">Elite Fitness</span><span class="badge badge-gold">£1,800</span></div>
-          <div class="data-row"><span class="name">Harbour Fish Bar</span><span class="badge badge-gold">£950</span></div>
-          <div class="data-row"><span class="name">Greenway Landscaping</span><span class="badge badge-gold">£1,200</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ COMPARISON TABLE ════════ -->
-<section class="section" id="comparison">
-  <div class="container reveal" style="text-align:center">
-    <div class="section-tag">Plan Comparison</div>
-    <div class="section-title">What's Included in Each Plan</div>
-    <div class="compare-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Maps · £30/mo</th>
-            <th>Instagram · £30/mo</th>
-            <th>Bundle · £54.99/mo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Google Maps Scraper</td><td class="yes">✓</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Instagram Lead Scraper</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Unlimited Searches</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Email Extraction</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Phone Number Extraction</td><td class="yes">✓</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Real-Time Verification</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>CSV &amp; Excel Export</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>CRM Integrations</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Built-in Pipeline CRM</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>AI Website Generator</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Engagement Analytics</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Competitor Scraping</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Early Access to New Tools</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Dedicated Account Manager</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Priority Support</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ INTEGRATIONS ════════ -->
-<section class="section" id="integrations">
-  <div class="container reveal" style="text-align:center">
-    <div class="section-tag">Integrations</div>
-    <div class="section-title">Connect With Your<br>Favourite Tools</div>
-    <p class="section-sub" style="margin:0 auto">Push leads directly to your existing stack. No manual importing, no copy-pasting.</p>
-    <div class="integrations-grid">
-      <div class="integ-card"><div class="integ-icon">🔗</div><h4>Zapier</h4><p>5,000+ app connections</p></div>
-      <div class="integ-card"><div class="integ-icon">🟠</div><h4>HubSpot</h4><p>CRM &amp; marketing sync</p></div>
-      <div class="integ-card"><div class="integ-icon">📧</div><h4>Mailchimp</h4><p>Email campaigns</p></div>
-      <div class="integ-card"><div class="integ-icon">☁️</div><h4>Salesforce</h4><p>Enterprise CRM</p></div>
-      <div class="integ-card"><div class="integ-icon">🎯</div><h4>Pipedrive</h4><p>Sales pipeline</p></div>
-      <div class="integ-card"><div class="integ-icon">📊</div><h4>Google Sheets</h4><p>Spreadsheet sync</p></div>
-      <div class="integ-card"><div class="integ-icon">💬</div><h4>Slack</h4><p>Lead notifications</p></div>
-      <div class="integ-card"><div class="integ-icon">📨</div><h4>Outlook</h4><p>Email integration</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ CTA BANNER ════════ -->
-<section class="cta-banner">
-  <div class="container reveal">
-    <div class="section-tag">Ready?</div>
-    <h2>Start Pulling Verified Leads<br>In Under 5 Minutes</h2>
-    <p>No credit card required for your 30-day free trial. Cancel anytime. No questions asked.</p>
-    <div class="cta-actions">
-      <a href="payment.html" class="btn-primary">View Plans &amp; Pricing →</a>
-      <a href="index.html#contact" class="btn-secondary">Talk to Sales</a>
-    </div>
-  </div>
-</section>
-
-<!-- ════════ FOOTER ════════ -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
-      <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google Maps &amp; Instagram in minutes.</p>
-      <div class="footer-social">
-        <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
-        <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
-        <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-        <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="index.html#products">Google Maps Scraper</a>
-      <a href="index.html#insta-preview">Instagram Scraper</a>
-      <a href="features.html">All Features</a>
-      <a href="payment.html">Pricing</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="index.html#about">About Us</a>
-      <a href="index.html#blog">Blog</a>
-      <a href="index.html#forum">Forum</a>
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Client<span>Sniper</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="features.html" class="active">Features</a>
+      <a href="blog.html">Blog</a>
+      <a href="forum.html">Forum</a>
+      <a href="payment.html">Plans</a>
       <a href="index.html#contact">Contact</a>
-      <a href="help.html">Help Centre</a>
     </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="cookies.html">Cookie Policy</a>
+    <a href="payment.html" class="nav-cta">Get Started</a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-drawer" id="drawer">
+    <a href="index.html" onclick="closeDrawer()">Home</a>
+    <a href="features.html" onclick="closeDrawer()">Features</a>
+    <a href="blog.html" onclick="closeDrawer()">Blog</a>
+    <a href="forum.html" onclick="closeDrawer()">Forum</a>
+    <a href="payment.html" onclick="closeDrawer()">Plans</a>
+    <a href="index.html#contact" onclick="closeDrawer()">Contact</a>
+    <a href="payment.html" class="nav-cta" onclick="closeDrawer()">Get Started</a>
+  </div>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="page-hero">
+    <div class="tag">Feature Deep Dive</div>
+    <h1>Every Tool You Need.<br><span class="outline">Nothing You Don't.</span></h1>
+    <p>Six powerful features designed to turn any search into a pipeline of verified, ready-to-action leads. No fluff.
+      No gimmicks. Just results.</p>
+  </section>
+
+  <!-- ════════ OVERVIEW GRID ════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="feat-overview reveal">
+        <div class="feat-overview-card">
+          <div class="icon">📍</div>
+          <h3>Google Maps Scraper</h3>
+          <p>Scrape verified business data — names, emails, phones, ratings — from any Google Maps search in any city
+            worldwide.</p>
+        </div>
+        <div class="feat-overview-card">
+          <div class="icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--insta2)">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+            </svg></div>
+          <h3>Instagram Lead Scraper</h3>
+          <p>Extract bio emails, follower counts, engagement metrics and more from public profiles, hashtags and
+            competitor accounts.</p>
+        </div>
+        <div class="feat-overview-card">
+          <div class="icon">🤖</div>
+          <h3>AI Website Generator</h3>
+          <p>Auto-generate a professional website mockup for any lead. Show prospects what you'd build — close deals
+            faster.</p>
+        </div>
+        <div class="feat-overview-card">
+          <div class="icon">📊</div>
+          <h3>CRM &amp; Pipeline</h3>
+          <p>Organize, tag and track every lead through your sales pipeline with our built-in lightweight CRM.</p>
+        </div>
+        <div class="feat-overview-card">
+          <div class="icon">⚡</div>
+          <h3>Automation &amp; Integrations</h3>
+          <p>Connect to Zapier, HubSpot, Mailchimp and more. Automate your outreach from scrape to sequence.</p>
+        </div>
+        <div class="feat-overview-card">
+          <div class="icon">🚀</div>
+          <h3>5-Minute Setup</h3>
+          <p>No code, no complex config. Pick a scraper, enter your search, and start pulling leads immediately.</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2025 ClientSniper. All rights reserved.</span>
-    <span>Built with precision. 🎯</span>
-  </div>
-</footer>
+  </section>
 
-<!-- SCRIPTS -->
-<script>
-/* Cursor */
-const ring=document.getElementById('cursorRing'),dot=document.getElementById('cursorDot');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
-(function a(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
-document.querySelectorAll('a,button,.feat-overview-card,.integ-card,.dd-feature').forEach(el=>{
-  el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
-});
+  <!-- ════════ DEEP DIVE: GOOGLE MAPS ════════ -->
+  <section class="section" id="maps-feature">
+    <div class="container">
+      <div class="deep-dive reveal">
+        <div class="dd-content">
+          <div class="dd-tag maps-color">Google Maps Scraper</div>
+          <h2>Turn Map Searches Into<br>Revenue Pipelines</h2>
+          <p>Every Google Maps listing is a potential client. Our scraper pulls verified contact data — name, phone,
+            email, website, rating, review count — from any Maps search in any city.</p>
+          <div class="dd-features">
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Unlimited Location Searches</strong><span>Target any city, state or country. Drill down to
+                  specific neighbourhoods or go broad — your choice.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Email &amp; Phone Extraction</strong><span>Automatically extract publicly listed emails and
+                  phone numbers. Verified in real-time before they hit your export.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Smart Filtering</strong><span>Filter results by minimum rating, review count, business type,
+                  and open status to find only high-quality prospects.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Batch Scraping</strong><span>Queue up to 1,000 results per search. Run multiple searches
+                  overnight and wake up to a full pipeline.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>One-Click Export</strong><span>Export to CSV, Excel or push directly to HubSpot, Salesforce
+                  and Pipedrive with native integrations.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="dd-visual">
+          <div class="mockup-header">
+            <div class="mockup-dot red"></div>
+            <div class="mockup-dot yellow"></div>
+            <div class="mockup-dot green"></div>
+            <span class="mockup-title">Maps Scraper — "Dentists in Manchester"</span>
+          </div>
+          <div class="data-row"><span class="name">Apex Dental Clinic</span><span class="badge badge-maps">✓
+              Verified</span></div>
+          <div class="data-row"><span class="name">Bright Smiles Orthodontics</span><span class="badge badge-maps">✓
+              Verified</span></div>
+          <div class="data-row"><span class="name">CityDent Manchester</span><span class="badge badge-maps">✓
+              Verified</span></div>
+          <div class="data-row"><span class="name">Dr. Patel's Family Dental</span><span class="badge badge-maps">✓
+              Verified</span></div>
+          <div class="data-row"><span class="name">Smile Hub Deansgate</span><span class="badge badge-maps">✓
+              Verified</span></div>
+          <div class="data-row"><span class="name">Northern Quarter Dentistry</span><span class="badge badge-maps">⏳
+              Checking</span></div>
+          <div class="mockup-stats">
+            <div class="mockup-stat">
+              <div class="stat-num">247</div>
+              <div class="stat-label">Results</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="stat-num">98%</div>
+              <div class="stat-label">Verified</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="stat-num">4.6★</div>
+              <div class="stat-label">Avg Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* Burger */
-const burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
-burger.addEventListener('click',()=>{burger.classList.toggle('open');drawer.classList.toggle('open')});
-function closeDrawer(){burger.classList.remove('open');drawer.classList.remove('open')}
+  <!-- ════════ DEEP DIVE: INSTAGRAM ════════ -->
+  <section class="section" id="insta-feature">
+    <div class="container">
+      <div class="deep-dive reverse reveal">
+        <div class="dd-content">
+          <div class="dd-tag insta-color">Instagram Lead Scraper</div>
+          <h2>Mine Instagram For<br>High-Intent Leads</h2>
+          <p>Tap into Instagram's massive business audience. Scrape bio data, emails, follower counts, engagement rates
+            and more from profiles, hashtags and competitor followings.</p>
+          <div class="dd-features">
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Profile &amp; Hashtag Scraping</strong><span>Scrape any public profile or hashtag. Build
+                  niche-targeted lead lists from the exact audiences you want.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Bio Email Extraction</strong><span>Automatically pull email addresses from Instagram bios —
+                  the #1 untapped lead source for B2C businesses.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Engagement Analytics</strong><span>See follower count, average likes, engagement rate and
+                  posting frequency to qualify leads before outreach.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Competitor Follower Scraping</strong><span>Scrape followers of any competitor or industry
+                  account. These people already want what you're selling.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Bulk Export &amp; CRM Sync</strong><span>Export thousands of leads to CSV or sync directly
+                  with your favourite CRM tools in one click.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="dd-visual">
+          <div class="mockup-header">
+            <div class="mockup-dot red"></div>
+            <div class="mockup-dot yellow"></div>
+            <div class="mockup-dot green"></div>
+            <span class="mockup-title">Instagram Scraper — #fitnesscoach</span>
+          </div>
+          <div class="data-row"><span class="name">@studio.bloom</span><span class="badge badge-insta">12.4k</span>
+          </div>
+          <div class="data-row"><span class="name">@thefitcoach_</span><span class="badge badge-insta">8.7k</span></div>
+          <div class="data-row"><span class="name">@coastal.eats</span><span class="badge badge-insta">23.1k</span>
+          </div>
+          <div class="data-row"><span class="name">@luxe.interiors</span><span class="badge badge-insta">15.9k</span>
+          </div>
+          <div class="data-row"><span class="name">@pawsandclaws.uk</span><span class="badge badge-insta">6.2k</span>
+          </div>
+          <div class="data-row"><span class="name">@neonbarber</span><span class="badge badge-insta">4.8k</span></div>
+          <div class="mockup-stats">
+            <div class="mockup-stat">
+              <div class="stat-num">184</div>
+              <div class="stat-label">Profiles</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="stat-num">73%</div>
+              <div class="stat-label">Has Email</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="stat-num">3.8%</div>
+              <div class="stat-label">Avg Engage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* Scroll reveal */
-const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-</script>
+  <!-- ════════ DEEP DIVE: AI WEBSITE GENERATOR ════════ -->
+  <section class="section" id="ai-feature">
+    <div class="container">
+      <div class="deep-dive reveal">
+        <div class="dd-content">
+          <div class="dd-tag ai-color">AI Website Generator · Beta</div>
+          <h2>Show Prospects What<br>You'll Build For Them</h2>
+          <p>Our AI analyses scraped lead data — business name, niche, reviews — and automatically generates a
+            professional website mockup. Send it to prospects and watch conversion rates soar.</p>
+          <div class="dd-features">
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>One-Click Generation</strong><span>Select any scraped lead and click "Generate Website". The
+                  AI builds a full-page mockup in seconds.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Niche-Aware Design</strong><span>The AI tailors design, copy and imagery to match the lead's
+                  industry — dental, fitness, restaurant, and more.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Shareable Preview Link</strong><span>Get a hosted URL you can send directly to the prospect.
+                  They see their new site before you even pitch.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Template Library</strong><span>Choose from 20+ industry templates or let the AI pick the best
+                  match automatically.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="dd-visual">
+          <div class="mockup-header">
+            <div class="mockup-dot red"></div>
+            <div class="mockup-dot yellow"></div>
+            <div class="mockup-dot green"></div>
+            <span class="mockup-title">AI Preview — Apex Dental Clinic</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px">
+            <div style="padding:20px;background:var(--surface2);border-radius:8px">
+              <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Hero Section</h4>
+              <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">Your smile deserves the best. Book at
+                Apex Dental today — 2,400+ happy patients.</p>
+            </div>
+            <div style="padding:20px;background:var(--surface2);border-radius:8px">
+              <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Services</h4>
+              <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">Whitening · Invisalign · Implants ·
+                Emergency · Paediatric Care</p>
+            </div>
+            <div style="padding:20px;background:var(--surface2);border-radius:8px">
+              <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Reviews</h4>
+              <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">"Best clinic in Manchester" — Sarah M.
+                ★★★★★</p>
+            </div>
+            <div style="padding:20px;background:var(--surface2);border-radius:8px">
+              <h4 style="font-family:var(--serif);font-size:.95rem;color:var(--ai);margin-bottom:8px">Contact</h4>
+              <p style="font-size:.78rem;color:var(--text-dim);line-height:1.5">📍 14 King St · ☎ 0161 XXX · Online
+                booking</p>
+            </div>
+          </div>
+          <div
+            style="margin-top:16px;text-align:center;padding:12px;background:rgba(162,89,255,.06);border:1px solid rgba(162,89,255,.15);border-radius:8px">
+            <span style="color:var(--ai);font-size:.75rem;letter-spacing:1px">✨ AI-GENERATED IN 4.2 SECONDS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ DEEP DIVE: CRM ════════ -->
+  <section class="section" id="crm-feature">
+    <div class="container">
+      <div class="deep-dive reverse reveal">
+        <div class="dd-content">
+          <div class="dd-tag crm-color">CRM &amp; Pipeline</div>
+          <h2>From Scrape to Close.<br>All in One Place.</h2>
+          <p>Don't export leads to a dead spreadsheet. Our built-in CRM lets you organise, tag and track every prospect
+            through your sales pipeline without leaving ClientSniper.</p>
+          <div class="dd-features">
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Drag &amp; Drop Pipeline</strong><span>Move leads through stages — New, Contacted, Qualified,
+                  Proposal, Closed — with a simple drag and drop interface.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Custom Tags &amp; Filters</strong><span>Tag leads by niche, location, priority or any custom
+                  label. Filter instantly to find exactly who you need.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Activity Timeline</strong><span>See every interaction — scrape date, emails sent, notes added
+                  — in a chronological timeline per lead.</span></div>
+            </div>
+            <div class="dd-feature">
+              <span class="check">✓</span>
+              <div><strong>Revenue Tracking</strong><span>Assign deal values and track your projected and actual revenue
+                  by month, quarter or year.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="dd-visual">
+          <div class="mockup-header">
+            <div class="mockup-dot red"></div>
+            <div class="mockup-dot yellow"></div>
+            <div class="mockup-dot green"></div>
+            <span class="mockup-title">CRM Pipeline — This Week</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">
+            <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
+              <div
+                style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
+                New</div>
+              <div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">24</div>
+            </div>
+            <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
+              <div
+                style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
+                Contacted</div>
+              <div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">18</div>
+            </div>
+            <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
+              <div
+                style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
+                Proposal</div>
+              <div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">7</div>
+            </div>
+            <div style="text-align:center;padding:12px 8px;background:var(--surface2);border-radius:6px">
+              <div
+                style="font-size:.65rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
+                Closed</div>
+              <div style="font-family:var(--serif);font-size:1.4rem;color:var(--maps)">5</div>
+            </div>
+          </div>
+          <div style="margin-top:16px">
+            <div class="data-row"><span class="name">Apex Dental</span><span class="badge badge-gold">£2,400</span>
+            </div>
+            <div class="data-row"><span class="name">Elite Fitness</span><span class="badge badge-gold">£1,800</span>
+            </div>
+            <div class="data-row"><span class="name">Harbour Fish Bar</span><span class="badge badge-gold">£950</span>
+            </div>
+            <div class="data-row"><span class="name">Greenway Landscaping</span><span
+                class="badge badge-gold">£1,200</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ COMPARISON TABLE ════════ -->
+  <section class="section" id="comparison">
+    <div class="container reveal" style="text-align:center">
+      <div class="section-tag">Plan Comparison</div>
+      <div class="section-title">What's Included in Each Plan</div>
+      <div class="compare-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Maps · £30/mo</th>
+              <th>Instagram · £30/mo</th>
+              <th>Bundle · £54.99/mo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google Maps Scraper</td>
+              <td class="yes">✓</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Instagram Lead Scraper</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Unlimited Searches</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Email Extraction</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Phone Number Extraction</td>
+              <td class="yes">✓</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Real-Time Verification</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>CSV &amp; Excel Export</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>CRM Integrations</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Built-in Pipeline CRM</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>AI Website Generator</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Engagement Analytics</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Competitor Scraping</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Early Access to New Tools</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Dedicated Account Manager</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Priority Support</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ INTEGRATIONS ════════ -->
+  <section class="section" id="integrations">
+    <div class="container reveal" style="text-align:center">
+      <div class="section-tag">Integrations</div>
+      <div class="section-title">Connect With Your<br>Favourite Tools</div>
+      <p class="section-sub" style="margin:0 auto">Push leads directly to your existing stack. No manual importing, no
+        copy-pasting.</p>
+      <div class="integrations-grid">
+        <div class="integ-card">
+          <div class="integ-icon">🔗</div>
+          <h4>Zapier</h4>
+          <p>5,000+ app connections</p>
+        </div>
+        <div class="integ-card">
+          <div class="integ-icon">🟠</div>
+          <h4>HubSpot</h4>
+          <p>CRM &amp; marketing sync</p>
+        </div>
+        <div class="integ-card">
+          <div class="integ-icon">📧</div>
+          <h4>Mailchimp</h4>
+          <p>Email campaigns</p>
+        </div>
+        <div class="integ-card">
+          <div class="integ-icon">☁️</div>
+          <h4>Salesforce</h4>
+          <p>Enterprise CRM</p>
+        </div>
+        <div class="integ-card">
+          <div class="integ-icon">🎯</div>
+          <h4>Pipedrive</h4>
+          <p>Sales pipeline</p>
+        </div>
+        <div class="integ-card">
+          <div class="integ-icon">📊</div>
+          <h4>Google Sheets</h4>
+          <p>Spreadsheet sync</p>
+        </div>
+        <div class="integ-card">
+          <div class="integ-icon">💬</div>
+          <h4>Slack</h4>
+          <p>Lead notifications</p>
+        </div>
+        <div class="integ-card">
+          <div class="integ-icon">📨</div>
+          <h4>Outlook</h4>
+          <p>Email integration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CTA BANNER ════════ -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <div class="section-tag">Ready?</div>
+      <h2>Start Pulling Verified Leads<br>In Under 5 Minutes</h2>
+      <p>No credit card required for your 30-day free trial. Cancel anytime. No questions asked.</p>
+      <div class="cta-actions">
+        <a href="payment.html" class="btn-primary">View Plans &amp; Pricing →</a>
+        <a href="index.html#contact" class="btn-secondary">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
+        <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google
+          Maps &amp; Instagram in minutes.</p>
+        <div class="footer-social">
+          <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
+          <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
+          <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+            </svg></a>
+          <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="index.html#products">Google Maps Scraper</a>
+        <a href="index.html#insta-preview">Instagram Scraper</a>
+        <a href="features.html">All Features</a>
+        <a href="payment.html">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="blog.html">Blog</a>
+        <a href="forum.html">Forum</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="help.html">Help Centre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 ClientSniper. All rights reserved.</span>
+      <span>Built with precision. 🎯</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    /* Cursor */
+    const ring = document.getElementById('cursorRing'), dot = document.getElementById('cursorDot');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px' });
+    (function a() { rx += (mx - rx) * .15; ry += (my - ry) * .15; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(a) })();
+    document.querySelectorAll('a,button,.feat-overview-card,.integ-card,.dd-feature').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+
+    /* Burger */
+    const burger = document.getElementById('burger'), drawer = document.getElementById('drawer');
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open') });
+    function closeDrawer() { burger.classList.remove('open'); drawer.classList.remove('open') }
+
+    /* Scroll reveal */
+    const ro = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
 </body>
+
 </html>

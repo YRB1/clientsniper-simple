@@ -1,195 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — ClientSniper</title>
-<meta name="description" content="ClientSniper Privacy Policy. Learn how we collect, use, and protect your personal data.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#030507;--surface:#0a0d10;--surface2:#111519;--border:#1a1e24;
-  --gold:#C9A465;--gold-dim:#8a6d3b;--text:#F0EBE0;--text-dim:#8a8578;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
-}
-html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:var(--sans)}
-body{overflow-x:hidden;background:var(--bg)}
-a{color:inherit;text-decoration:none}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — ClientSniper</title>
+  <meta name="description"
+    content="ClientSniper Privacy Policy. Learn how we collect, use, and protect your personal data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-/* ───── NAV ───── */
-.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(16px);background:rgba(3,5,7,.75);border-bottom:1px solid rgba(255,255,255,.03)}
-.logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);letter-spacing:1px}
-.logo span{color:var(--text)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);transition:color .2s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{padding:10px 24px;border:1px solid var(--gold);color:var(--gold);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;transition:all .2s}
-.nav-cta:hover{background:var(--gold);color:var(--bg)}
+    :root {
+      --bg: #030507;
+      --surface: #0a0d10;
+      --surface2: #111519;
+      --border: #1a1e24;
+      --gold: #C9A465;
+      --gold-dim: #8a6d3b;
+      --text: #F0EBE0;
+      --text-dim: #8a8578;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+    }
 
-/* ───── LEGAL CONTENT ───── */
-.legal-hero{padding:160px 40px 60px;text-align:center}
-.legal-hero h1{font-family:var(--serif);font-size:2.8rem;color:var(--gold);margin-bottom:12px}
-.legal-hero p{font-size:.85rem;color:var(--text-dim)}
-.legal-body{max-width:800px;margin:0 auto;padding:0 40px 100px}
-.legal-body h2{font-family:var(--serif);font-size:1.4rem;color:var(--gold);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.legal-body h3{font-size:.95rem;margin:24px 0 8px;color:var(--text)}
-.legal-body p,.legal-body li{font-size:.85rem;color:var(--text-dim);line-height:1.8;margin-bottom:12px}
-.legal-body ul{padding-left:20px;margin-bottom:16px}
-.legal-body ul li{list-style:disc;margin-bottom:6px}
-.legal-body a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans)
+    }
 
-/* ───── FOOTER ───── */
-.footer{border-top:1px solid var(--border);padding:60px 40px 32px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
-.footer-brand{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:12px}
-.footer-brand-text{font-size:.8rem;color:var(--text-dim);line-height:1.7;max-width:300px}
-.footer-social{display:flex;gap:12px;margin-top:16px}
-.footer-social a{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--text-dim);transition:all .2s}
-.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
-.footer-col{display:flex;flex-direction:column;gap:10px}
-.footer-col h4{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.footer-col a{font-size:.8rem;color:var(--text-dim);transition:color .2s}
-.footer-col a:hover{color:var(--gold)}
-.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-dim)}
-@media(max-width:800px){.nav-links{display:none}.footer-grid{grid-template-columns:1fr 1fr}.legal-hero h1{font-size:2rem}}
-</style>
+    body {
+      overflow-x: hidden;
+      background: var(--bg)
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    /* ───── NAV ───── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      background: rgba(3, 5, 7, .75);
+      border-bottom: 1px solid rgba(255, 255, 255, .03)
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px
+    }
+
+    .logo span {
+      color: var(--text)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: .78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color .2s
+    }
+
+    .nav-links a:hover {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all .2s
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--bg)
+    }
+
+    /* ───── LEGAL CONTENT ───── */
+    .legal-hero {
+      padding: 160px 40px 60px;
+      text-align: center
+    }
+
+    .legal-hero h1 {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .legal-hero p {
+      font-size: .85rem;
+      color: var(--text-dim)
+    }
+
+    .legal-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 40px 100px
+    }
+
+    .legal-body h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin: 48px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .legal-body h3 {
+      font-size: .95rem;
+      margin: 24px 0 8px;
+      color: var(--text)
+    }
+
+    .legal-body p,
+    .legal-body li {
+      font-size: .85rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 12px
+    }
+
+    .legal-body ul {
+      padding-left: 20px;
+      margin-bottom: 16px
+    }
+
+    .legal-body ul li {
+      list-style: disc;
+      margin-bottom: 6px
+    }
+
+    .legal-body a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px
+    }
+
+    /* ───── FOOTER ───── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 40px 32px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .footer-brand-text {
+      font-size: .8rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 300px
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .footer-social a {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      color: var(--text-dim);
+      transition: all .2s
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold)
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-col h4 {
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px
+    }
+
+    .footer-col a {
+      font-size: .8rem;
+      color: var(--text-dim);
+      transition: color .2s
+    }
+
+    .footer-col a:hover {
+      color: var(--gold)
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: .72rem;
+      color: var(--text-dim)
+    }
+
+    @media(max-width:800px) {
+      .nav-links {
+        display: none
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .legal-hero h1 {
+        font-size: 2rem
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="logo">Client<span>Sniper</span></a>
-  <div class="nav-links">
-    <a href="index.html#products">Products</a>
-    <a href="features.html">Features</a>
-    <a href="payment.html">Pricing</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="payment.html" class="nav-cta">Start Free Trial</a>
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="logo">Client<span>Sniper</span></a>
+    <div class="nav-links">
+      <a href="index.html#products">Products</a>
+      <a href="features.html">Features</a>
+      <a href="payment.html">Pricing</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="payment.html" class="nav-cta">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="legal-hero">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: 28 March 2026</p>
   </div>
-</nav>
 
-<!-- HERO -->
-<div class="legal-hero">
-  <h1>Privacy Policy</h1>
-  <p>Last updated: 28 March 2026</p>
-</div>
+  <!-- CONTENT -->
+  <div class="legal-body">
 
-<!-- CONTENT -->
-<div class="legal-body">
+    <p>ClientSniper ("we", "us", "our") is committed to protecting your privacy. This Privacy Policy explains how we
+      collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
 
-<p>ClientSniper ("we", "us", "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
+    <h2>1. Information We Collect</h2>
+    <h3>Information You Provide</h3>
+    <ul>
+      <li><strong>Account data:</strong> name, email address, password, and billing information when you create an
+        account or subscribe to a plan.</li>
+      <li><strong>Contact data:</strong> information you provide when contacting us through our contact form or help
+        centre.</li>
+      <li><strong>Payment data:</strong> processed securely by Stripe. We do not store your full card details on our
+        servers.</li>
+    </ul>
+    <h3>Automatically Collected Information</h3>
+    <ul>
+      <li><strong>Usage data:</strong> pages viewed, features used, session duration, and interaction patterns.</li>
+      <li><strong>Device data:</strong> browser type, operating system, IP address, and device identifiers.</li>
+      <li><strong>Cookies:</strong> see our <a href="cookies.html">Cookie Policy</a> for details.</li>
+    </ul>
 
-<h2>1. Information We Collect</h2>
-<h3>Information You Provide</h3>
-<ul>
-  <li><strong>Account data:</strong> name, email address, password, and billing information when you create an account or subscribe to a plan.</li>
-  <li><strong>Contact data:</strong> information you provide when contacting us through our contact form or help centre.</li>
-  <li><strong>Payment data:</strong> processed securely by Stripe. We do not store your full card details on our servers.</li>
-</ul>
-<h3>Automatically Collected Information</h3>
-<ul>
-  <li><strong>Usage data:</strong> pages viewed, features used, session duration, and interaction patterns.</li>
-  <li><strong>Device data:</strong> browser type, operating system, IP address, and device identifiers.</li>
-  <li><strong>Cookies:</strong> see our <a href="cookies.html">Cookie Policy</a> for details.</li>
-</ul>
+    <h2>2. How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Provide, maintain, and improve our services</li>
+      <li>Process transactions and send related information</li>
+      <li>Send you technical notices, updates, and support messages</li>
+      <li>Respond to your comments, questions, and customer service requests</li>
+      <li>Monitor and analyse trends, usage, and activities</li>
+      <li>Detect, prevent, and address fraud or technical issues</li>
+    </ul>
 
-<h2>2. How We Use Your Information</h2>
-<p>We use the information we collect to:</p>
-<ul>
-  <li>Provide, maintain, and improve our services</li>
-  <li>Process transactions and send related information</li>
-  <li>Send you technical notices, updates, and support messages</li>
-  <li>Respond to your comments, questions, and customer service requests</li>
-  <li>Monitor and analyse trends, usage, and activities</li>
-  <li>Detect, prevent, and address fraud or technical issues</li>
-</ul>
+    <h2>3. Data Sharing</h2>
+    <p>We do not sell your personal data. We may share information with:</p>
+    <ul>
+      <li><strong>Service providers:</strong> companies that perform services on our behalf (e.g., Stripe for payment
+        processing, hosting providers).</li>
+      <li><strong>Legal obligations:</strong> when required by law, regulation, or legal process.</li>
+      <li><strong>Business transfers:</strong> in connection with a merger, acquisition, or sale of assets.</li>
+    </ul>
 
-<h2>3. Data Sharing</h2>
-<p>We do not sell your personal data. We may share information with:</p>
-<ul>
-  <li><strong>Service providers:</strong> companies that perform services on our behalf (e.g., Stripe for payment processing, hosting providers).</li>
-  <li><strong>Legal obligations:</strong> when required by law, regulation, or legal process.</li>
-  <li><strong>Business transfers:</strong> in connection with a merger, acquisition, or sale of assets.</li>
-</ul>
+    <h2>4. Data Retention</h2>
+    <p>We retain your personal data only for as long as necessary to fulfil the purposes for which it was collected,
+      including to satisfy legal, accounting, or reporting requirements. When you delete your account, we will remove
+      your personal data within 30 days, except where retention is required by law.</p>
 
-<h2>4. Data Retention</h2>
-<p>We retain your personal data only for as long as necessary to fulfil the purposes for which it was collected, including to satisfy legal, accounting, or reporting requirements. When you delete your account, we will remove your personal data within 30 days, except where retention is required by law.</p>
+    <h2>5. Your Rights (UK GDPR)</h2>
+    <p>Under UK data protection law, you have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Request correction of inaccurate data</li>
+      <li>Request deletion of your data</li>
+      <li>Object to or restrict processing of your data</li>
+      <li>Data portability — receive your data in a structured format</li>
+      <li>Withdraw consent at any time</li>
+    </ul>
+    <p>To exercise these rights, contact us at <a href="mailto:privacy@clientsniper.com">privacy@clientsniper.com</a>.
+    </p>
 
-<h2>5. Your Rights (UK GDPR)</h2>
-<p>Under UK data protection law, you have the right to:</p>
-<ul>
-  <li>Access the personal data we hold about you</li>
-  <li>Request correction of inaccurate data</li>
-  <li>Request deletion of your data</li>
-  <li>Object to or restrict processing of your data</li>
-  <li>Data portability — receive your data in a structured format</li>
-  <li>Withdraw consent at any time</li>
-</ul>
-<p>To exercise these rights, contact us at <a href="mailto:privacy@clientsniper.com">privacy@clientsniper.com</a>.</p>
+    <h2>6. Data Security</h2>
+    <p>We implement appropriate technical and organisational measures to protect your personal data, including
+      encryption in transit (TLS), secure password hashing, and access controls. However, no system is 100% secure, and
+      we cannot guarantee absolute security.</p>
 
-<h2>6. Data Security</h2>
-<p>We implement appropriate technical and organisational measures to protect your personal data, including encryption in transit (TLS), secure password hashing, and access controls. However, no system is 100% secure, and we cannot guarantee absolute security.</p>
+    <h2>7. International Transfers</h2>
+    <p>Your data may be processed in countries outside the UK. Where this occurs, we ensure appropriate safeguards are
+      in place in compliance with UK GDPR.</p>
 
-<h2>7. International Transfers</h2>
-<p>Your data may be processed in countries outside the UK. Where this occurs, we ensure appropriate safeguards are in place in compliance with UK GDPR.</p>
+    <h2>8. Children's Privacy</h2>
+    <p>Our services are not directed to individuals under 18. We do not knowingly collect personal data from children.
+      If we become aware that we have collected data from a child, we will delete it promptly.</p>
 
-<h2>8. Children's Privacy</h2>
-<p>Our services are not directed to individuals under 18. We do not knowingly collect personal data from children. If we become aware that we have collected data from a child, we will delete it promptly.</p>
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the
+      new policy on this page and updating the "Last updated" date.</p>
 
-<h2>9. Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date.</p>
+    <h2>10. Contact Us</h2>
+    <p>If you have questions about this Privacy Policy or our data practices, contact us at:</p>
+    <p><strong>Email:</strong> <a href="mailto:privacy@clientsniper.com">privacy@clientsniper.com</a><br>
+      <strong>Address:</strong> ClientSniper Ltd, United Kingdom
+    </p>
 
-<h2>10. Contact Us</h2>
-<p>If you have questions about this Privacy Policy or our data practices, contact us at:</p>
-<p><strong>Email:</strong> <a href="mailto:privacy@clientsniper.com">privacy@clientsniper.com</a><br>
-<strong>Address:</strong> ClientSniper Ltd, United Kingdom</p>
+  </div>
 
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
-      <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google Maps &amp; Instagram in minutes.</p>
-      <div class="footer-social">
-        <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
-        <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
-        <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-        <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
+        <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google
+          Maps &amp; Instagram in minutes.</p>
+        <div class="footer-social">
+          <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
+          <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
+          <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+            </svg></a>
+          <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="index.html#products">Google Maps Scraper</a>
+        <a href="index.html#insta-preview">Instagram Scraper</a>
+        <a href="features.html">All Features</a>
+        <a href="payment.html">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#blog">Blog</a>
+        <a href="index.html#forum">Forum</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="help.html">Help Centre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="index.html#products">Google Maps Scraper</a>
-      <a href="index.html#insta-preview">Instagram Scraper</a>
-      <a href="features.html">All Features</a>
-      <a href="payment.html">Pricing</a>
+    <div class="footer-bottom">
+      <span>&copy; 2025 ClientSniper. All rights reserved.</span>
+      <span>Built with precision. 🎯</span>
     </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="index.html#about">About Us</a>
-      <a href="index.html#blog">Blog</a>
-      <a href="index.html#forum">Forum</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="help.html">Help Centre</a>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="cookies.html">Cookie Policy</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2025 ClientSniper. All rights reserved.</span>
-    <span>Built with precision. 🎯</span>
-  </div>
-</footer>
+  </footer>
 
 </body>
+
 </html>

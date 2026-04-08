@@ -1,452 +1,1017 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Help Centre — ClientSniper</title>
-<meta name="description" content="ClientSniper Help Centre. Get answers to common questions or chat with our AI assistant.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#030507;--surface:#0a0d10;--surface2:#111519;--border:#1a1e24;
-  --gold:#C9A465;--gold-dim:#8a6d3b;--text:#F0EBE0;--text-dim:#8a8578;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
-}
-html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:var(--sans)}
-body{overflow-x:hidden;background:var(--bg)}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Centre — ClientSniper</title>
+  <meta name="description"
+    content="ClientSniper Help Centre. Get answers to common questions or chat with our AI assistant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-/* ───── NAV ───── */
-.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(16px);background:rgba(3,5,7,.75);border-bottom:1px solid rgba(255,255,255,.03)}
-.logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);letter-spacing:1px}
-.logo span{color:var(--text)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);transition:color .2s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{padding:10px 24px;border:1px solid var(--gold);color:var(--gold);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;transition:all .2s}
-.nav-cta:hover{background:var(--gold);color:var(--bg)}
+    :root {
+      --bg: #030507;
+      --surface: #0a0d10;
+      --surface2: #111519;
+      --border: #1a1e24;
+      --gold: #C9A465;
+      --gold-dim: #8a6d3b;
+      --text: #F0EBE0;
+      --text-dim: #8a8578;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+    }
 
-/* ───── HERO ───── */
-.help-hero{padding:160px 40px 48px;text-align:center}
-.help-hero h1{font-family:var(--serif);font-size:2.8rem;color:var(--gold);margin-bottom:12px}
-.help-hero p{font-size:.9rem;color:var(--text-dim);max-width:500px;margin:0 auto 32px}
-.help-search{max-width:520px;margin:0 auto;position:relative}
-.help-search input{width:100%;padding:16px 20px 16px 48px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:.9rem;border-radius:4px;transition:border-color .2s}
-.help-search input:focus{border-color:var(--gold);outline:none}
-.help-search .search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:1rem}
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans)
+    }
 
-/* ───── FAQ CATEGORIES ───── */
-.help-container{max-width:1000px;margin:0 auto;padding:0 40px 60px}
-.help-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:60px}
-.help-cat{background:var(--surface);border:1px solid var(--border);padding:28px 24px;text-align:center;transition:all .3s;cursor:pointer}
-.help-cat:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 28px rgba(201,164,101,.05)}
-.help-cat .cat-icon{font-size:1.8rem;margin-bottom:12px}
-.help-cat h3{font-family:var(--serif);font-size:1.05rem;margin-bottom:6px}
-.help-cat p{font-size:.78rem;color:var(--text-dim);line-height:1.5}
+    body {
+      overflow-x: hidden;
+      background: var(--bg)
+    }
 
-/* ───── FAQ SECTIONS ───── */
-.help-section{margin-bottom:48px}
-.help-section-title{font-family:var(--serif);font-size:1.3rem;color:var(--gold);margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.faq-item{border:1px solid var(--border);margin-bottom:8px;transition:border-color .2s}
-.faq-item.open{border-color:rgba(201,164,101,.15)}
-.faq-question{padding:18px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.88rem;transition:color .2s}
-.faq-question:hover{color:var(--gold)}
-.faq-question .faq-toggle{font-size:1.1rem;color:var(--text-dim);transition:transform .3s}
-.faq-item.open .faq-toggle{transform:rotate(45deg);color:var(--gold)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq-item.open .faq-answer{max-height:400px}
-.faq-answer p{padding:0 24px 18px;font-size:.82rem;color:var(--text-dim);line-height:1.8}
-.faq-answer a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+    a {
+      color: inherit;
+      text-decoration: none
+    }
 
-/* ───── AI CHATBOT ───── */
-.chat-toggle{position:fixed;bottom:32px;right:32px;width:60px;height:60px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--bg);box-shadow:0 8px 32px rgba(201,164,101,.25);cursor:pointer;transition:transform .2s,box-shadow .2s;z-index:200}
-.chat-toggle:hover{transform:scale(1.08);box-shadow:0 12px 40px rgba(201,164,101,.35)}
-.chat-window{position:fixed;bottom:108px;right:32px;width:380px;height:520px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:none;flex-direction:column;z-index:200;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.chat-window.open{display:flex}
-.chat-header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.chat-header h4{font-family:var(--serif);font-size:1rem;color:var(--gold)}
-.chat-close{font-size:1.2rem;color:var(--text-dim);cursor:pointer;transition:color .2s}
-.chat-close:hover{color:var(--gold)}
-.chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
-.chat-messages::-webkit-scrollbar{width:3px}
-.chat-messages::-webkit-scrollbar-track{background:transparent}
-.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-.chat-msg{max-width:85%;padding:12px 16px;font-size:.82rem;line-height:1.6;border-radius:8px}
-.chat-msg.bot{background:var(--surface2);color:var(--text-dim);align-self:flex-start;border-bottom-left-radius:2px}
-.chat-msg.user{background:rgba(201,164,101,.1);color:var(--text);align-self:flex-end;border-bottom-right-radius:2px}
-.chat-msg.bot .typing{display:inline-flex;gap:4px}
-.chat-msg.bot .typing span{width:6px;height:6px;background:var(--text-dim);border-radius:50%;animation:typingDot 1.2s infinite}
-.chat-msg.bot .typing span:nth-child(2){animation-delay:.2s}
-.chat-msg.bot .typing span:nth-child(3){animation-delay:.4s}
-@keyframes typingDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
-.chat-input-row{padding:14px 16px;border-top:1px solid var(--border);display:flex;gap:8px}
-.chat-input-row input{flex:1;padding:10px 14px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:.82rem;border-radius:4px}
-.chat-input-row input:focus{border-color:var(--gold);outline:none}
-.chat-send{padding:10px 18px;background:var(--gold);color:var(--bg);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;font-weight:600;border-radius:4px;transition:opacity .2s}
-.chat-send:hover{opacity:.85}
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none
+    }
 
-/* ───── FOOTER ───── */
-.footer{border-top:1px solid var(--border);padding:60px 40px 32px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
-.footer-brand{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:12px}
-.footer-brand-text{font-size:.8rem;color:var(--text-dim);line-height:1.7;max-width:300px}
-.footer-social{display:flex;gap:12px;margin-top:16px}
-.footer-social a{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--text-dim);transition:all .2s}
-.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
-.footer-col{display:flex;flex-direction:column;gap:10px}
-.footer-col h4{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.footer-col a{font-size:.8rem;color:var(--text-dim);transition:color .2s}
-.footer-col a:hover{color:var(--gold)}
-.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-dim)}
-@media(max-width:800px){
-  .nav-links{display:none}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .help-hero h1{font-size:2rem}
-  .help-cats{grid-template-columns:1fr}
-  .chat-window{width:calc(100% - 32px);right:16px;bottom:100px;height:460px}
-}
-</style>
+    /* ───── NAV ───── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      background: rgba(3, 5, 7, .75);
+      border-bottom: 1px solid rgba(255, 255, 255, .03)
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px
+    }
+
+    .logo span {
+      color: var(--text)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: .78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color .2s
+    }
+
+    .nav-links a:hover {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all .2s
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--bg)
+    }
+
+    /* ───── HERO ───── */
+    .help-hero {
+      padding: 160px 40px 48px;
+      text-align: center
+    }
+
+    .help-hero h1 {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .help-hero p {
+      font-size: .9rem;
+      color: var(--text-dim);
+      max-width: 500px;
+      margin: 0 auto 32px
+    }
+
+    .help-search {
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative
+    }
+
+    .help-search input {
+      width: 100%;
+      padding: 16px 20px 16px 48px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: .9rem;
+      border-radius: 4px;
+      transition: border-color .2s
+    }
+
+    .help-search input:focus {
+      border-color: var(--gold);
+      outline: none
+    }
+
+    .help-search .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 1rem
+    }
+
+    /* ───── FAQ CATEGORIES ───── */
+    .help-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px 60px
+    }
+
+    .help-cats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 60px
+    }
+
+    .help-cat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      transition: all .3s;
+      cursor: pointer
+    }
+
+    .help-cat:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(201, 164, 101, .05)
+    }
+
+    .help-cat .cat-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px
+    }
+
+    .help-cat h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      margin-bottom: 6px
+    }
+
+    .help-cat p {
+      font-size: .78rem;
+      color: var(--text-dim);
+      line-height: 1.5
+    }
+
+    /* ───── FAQ SECTIONS ───── */
+    .help-section {
+      margin-bottom: 48px
+    }
+
+    .help-section-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+      transition: border-color .2s
+    }
+
+    .faq-item.open {
+      border-color: rgba(201, 164, 101, .15)
+    }
+
+    .faq-question {
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: .88rem;
+      transition: color .2s
+    }
+
+    .faq-question:hover {
+      color: var(--gold)
+    }
+
+    .faq-question .faq-toggle {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      transition: transform .3s
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
+      color: var(--gold)
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px
+    }
+
+    .faq-answer p {
+      padding: 0 24px 18px;
+      font-size: .82rem;
+      color: var(--text-dim);
+      line-height: 1.8
+    }
+
+    .faq-answer a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px
+    }
+
+    /* ───── AI CHATBOT ───── */
+    .chat-toggle {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 60px;
+      height: 60px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--bg);
+      box-shadow: 0 8px 32px rgba(201, 164, 101, .25);
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      z-index: 200
+    }
+
+    .chat-toggle:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 40px rgba(201, 164, 101, .35)
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 108px;
+      right: 32px;
+      width: 380px;
+      height: 520px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      z-index: 200;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5)
+    }
+
+    .chat-window.open {
+      display: flex
+    }
+
+    .chat-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .chat-header h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold)
+    }
+
+    .chat-close {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: color .2s
+    }
+
+    .chat-close:hover {
+      color: var(--gold)
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .chat-messages::-webkit-scrollbar {
+      width: 3px
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+      background: transparent
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px
+    }
+
+    .chat-msg {
+      max-width: 85%;
+      padding: 12px 16px;
+      font-size: .82rem;
+      line-height: 1.6;
+      border-radius: 8px
+    }
+
+    .chat-msg.bot {
+      background: var(--surface2);
+      color: var(--text-dim);
+      align-self: flex-start;
+      border-bottom-left-radius: 2px
+    }
+
+    .chat-msg.user {
+      background: rgba(201, 164, 101, .1);
+      color: var(--text);
+      align-self: flex-end;
+      border-bottom-right-radius: 2px
+    }
+
+    .chat-msg.bot .typing {
+      display: inline-flex;
+      gap: 4px
+    }
+
+    .chat-msg.bot .typing span {
+      width: 6px;
+      height: 6px;
+      background: var(--text-dim);
+      border-radius: 50%;
+      animation: typingDot 1.2s infinite
+    }
+
+    .chat-msg.bot .typing span:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .chat-msg.bot .typing span:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes typingDot {
+
+      0%,
+      60%,
+      100% {
+        opacity: .3;
+        transform: translateY(0)
+      }
+
+      30% {
+        opacity: 1;
+        transform: translateY(-4px)
+      }
+    }
+
+    .chat-input-row {
+      padding: 14px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: .82rem;
+      border-radius: 4px
+    }
+
+    .chat-input-row input:focus {
+      border-color: var(--gold);
+      outline: none
+    }
+
+    .chat-send {
+      padding: 10px 18px;
+      background: var(--gold);
+      color: var(--bg);
+      font-size: .72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: opacity .2s
+    }
+
+    .chat-send:hover {
+      opacity: .85
+    }
+
+    /* ───── FOOTER ───── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 40px 32px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .footer-brand-text {
+      font-size: .8rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 300px
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .footer-social a {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      color: var(--text-dim);
+      transition: all .2s
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold)
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-col h4 {
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px
+    }
+
+    .footer-col a {
+      font-size: .8rem;
+      color: var(--text-dim);
+      transition: color .2s
+    }
+
+    .footer-col a:hover {
+      color: var(--gold)
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: .72rem;
+      color: var(--text-dim)
+    }
+
+    @media(max-width:800px) {
+      .nav-links {
+        display: none
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .help-hero h1 {
+        font-size: 2rem
+      }
+
+      .help-cats {
+        grid-template-columns: 1fr
+      }
+
+      .chat-window {
+        width: calc(100% - 32px);
+        right: 16px;
+        bottom: 100px;
+        height: 460px
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="logo">Client<span>Sniper</span></a>
-  <div class="nav-links">
-    <a href="index.html#products">Products</a>
-    <a href="features.html">Features</a>
-    <a href="payment.html">Pricing</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="payment.html" class="nav-cta">Start Free Trial</a>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="logo">Client<span>Sniper</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="blog.html">Blog</a>
+      <a href="forum.html">Forum</a>
+      <a href="payment.html">Pricing</a>
+      <a href="payment.html" class="nav-cta">Start Free Trial</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<div class="help-hero">
-  <h1>Help Centre</h1>
-  <p>Find answers fast or chat with our AI assistant. We're here to help you get the most out of ClientSniper.</p>
-  <div class="help-search">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="helpSearch" placeholder="Search for help…" oninput="filterFAQ(this.value)">
-  </div>
-</div>
-
-<!-- CATEGORIES -->
-<div class="help-container">
-  <div class="help-cats">
-    <div class="help-cat" onclick="scrollToSection('getting-started')">
-      <div class="cat-icon">🚀</div>
-      <h3>Getting Started</h3>
-      <p>Account setup, first scrape, and navigation basics</p>
-    </div>
-    <div class="help-cat" onclick="scrollToSection('maps-help')">
-      <div class="cat-icon">📍</div>
-      <h3>Google Maps</h3>
-      <p>Scraping, filters, exports, and data accuracy</p>
-    </div>
-    <div class="help-cat" onclick="scrollToSection('insta-help')">
-      <div class="cat-icon">📸</div>
-      <h3>Instagram</h3>
-      <p>Follower scraping, hashtag search, and DM data</p>
-    </div>
-    <div class="help-cat" onclick="scrollToSection('billing-help')">
-      <div class="cat-icon">💳</div>
-      <h3>Billing &amp; Plans</h3>
-      <p>Subscriptions, upgrades, cancellations, and invoices</p>
-    </div>
-    <div class="help-cat" onclick="scrollToSection('data-help')">
-      <div class="cat-icon">🔒</div>
-      <h3>Data &amp; Privacy</h3>
-      <p>Your data, compliance, and account deletion</p>
-    </div>
-    <div class="help-cat" onclick="scrollToSection('troubleshoot')">
-      <div class="cat-icon">🛠️</div>
-      <h3>Troubleshooting</h3>
-      <p>Errors, performance issues, and bug reports</p>
+  <!-- HERO -->
+  <div class="help-hero">
+    <h1>Help Centre</h1>
+    <p>Find answers fast or chat with our AI assistant. We're here to help you get the most out of ClientSniper.</p>
+    <div class="help-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="helpSearch" placeholder="Search for help…" oninput="filterFAQ(this.value)">
     </div>
   </div>
 
-  <!-- GETTING STARTED -->
-  <div class="help-section" id="getting-started">
-    <div class="help-section-title">Getting Started</div>
-    <div class="faq-item" data-q="how do i create an account sign up register">
-      <div class="faq-question" onclick="toggleFAQ(this)">How do I create an account? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Head to our <a href="payment.html">Pricing page</a>, choose a plan, and click "Start Free Trial". You'll have 30 days free to explore everything — no card charged until the trial ends.</p></div>
-    </div>
-    <div class="faq-item" data-q="how does the free trial work 30 days">
-      <div class="faq-question" onclick="toggleFAQ(this)">How does the 30-day free trial work? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>You get full access to your chosen plan for 30 days. If you cancel before the trial ends, you won't be charged. Otherwise, your subscription starts automatically.</p></div>
-    </div>
-    <div class="faq-item" data-q="what can i do first scrape getting started">
-      <div class="faq-question" onclick="toggleFAQ(this)">What should I do after signing up? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>After signing up, you'll land on your dashboard. Try your first scrape — enter a niche and location in Google Maps Scraper to pull your first batch of leads. Export them as CSV and you're off.</p></div>
-    </div>
-  </div>
-
-  <!-- MAPS -->
-  <div class="help-section" id="maps-help">
-    <div class="help-section-title">Google Maps</div>
-    <div class="faq-item" data-q="how many leads can i scrape google maps limit">
-      <div class="faq-question" onclick="toggleFAQ(this)">How many leads can I scrape at once? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Each scrape can return up to 500 leads per search query. You can run multiple queries back-to-back — there's no daily cap on your plan.</p></div>
-    </div>
-    <div class="faq-item" data-q="what data does maps scraper return fields email phone">
-      <div class="faq-question" onclick="toggleFAQ(this)">What data fields are included? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Business name, address, phone number, website, email (when available), Google rating, review count, business category, and Google Maps URL.</p></div>
-    </div>
-    <div class="faq-item" data-q="export csv download data format">
-      <div class="faq-question" onclick="toggleFAQ(this)">Can I export leads as CSV? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Yes — one click and your leads download as a clean CSV file ready for your CRM, email tool, or spreadsheet.</p></div>
-    </div>
-    <div class="faq-item" data-q="accuracy data quality verified emails">
-      <div class="faq-question" onclick="toggleFAQ(this)">How accurate is the data? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>We pull live data directly from Google Maps, so it's as current as Google's own listings. Email accuracy depends on the business having a public email listed. We recommend verifying emails before sending campaigns.</p></div>
-    </div>
-  </div>
-
-  <!-- INSTAGRAM -->
-  <div class="help-section" id="insta-help">
-    <div class="help-section-title">Instagram</div>
-    <div class="faq-item" data-q="instagram scraper how does it work followers hashtags">
-      <div class="faq-question" onclick="toggleFAQ(this)">How does the Instagram scraper work? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Enter a hashtag, location, or competitor account. We'll scrape public profile data including usernames, bios, follower counts, emails (from bios), and website links.</p></div>
-    </div>
-    <div class="faq-item" data-q="is instagram scraping legal allowed terms">
-      <div class="faq-question" onclick="toggleFAQ(this)">Is Instagram scraping allowed? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>We only scrape publicly available data. You are responsible for how you use the data. We recommend reviewing Instagram's terms and your local data protection laws before outreach campaigns.</p></div>
-    </div>
-    <div class="faq-item" data-q="scrape competitor followers audience">
-      <div class="faq-question" onclick="toggleFAQ(this)">Can I scrape a competitor's followers? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Yes — enter any public account and we'll pull their follower list with profile details. Great for finding warm audiences in your niche.</p></div>
-    </div>
-  </div>
-
-  <!-- BILLING -->
-  <div class="help-section" id="billing-help">
-    <div class="help-section-title">Billing &amp; Plans</div>
-    <div class="faq-item" data-q="cancel subscription how to cancel">
-      <div class="faq-question" onclick="toggleFAQ(this)">How do I cancel my subscription? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Go to your account settings and click "Cancel Plan". Your access continues until the end of the current billing period. No partial refunds.</p></div>
-    </div>
-    <div class="faq-item" data-q="upgrade downgrade switch plan change">
-      <div class="faq-question" onclick="toggleFAQ(this)">Can I switch plans? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Yes — upgrade or downgrade anytime from your account settings. Changes take effect at the next billing cycle. Upgrades are prorated.</p></div>
-    </div>
-    <div class="faq-item" data-q="yearly annual billing discount save">
-      <div class="faq-question" onclick="toggleFAQ(this)">Is there a yearly discount? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Yes! Yearly plans save you 20% compared to monthly billing. Check our <a href="payment.html">Pricing page</a> for the exact amounts.</p></div>
-    </div>
-    <div class="faq-item" data-q="payment methods card stripe">
-      <div class="faq-question" onclick="toggleFAQ(this)">What payment methods do you accept? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>We accept all major credit and debit cards through Stripe — Visa, Mastercard, Amex, and more.</p></div>
-    </div>
-  </div>
-
-  <!-- DATA & PRIVACY -->
-  <div class="help-section" id="data-help">
-    <div class="help-section-title">Data &amp; Privacy</div>
-    <div class="faq-item" data-q="delete my account data removal gdpr">
-      <div class="faq-question" onclick="toggleFAQ(this)">Can I delete my account and data? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Yes. Contact us at <a href="mailto:privacy@clientsniper.com">privacy@clientsniper.com</a> and we'll delete your account and personal data within 30 days, as required under UK GDPR.</p></div>
-    </div>
-    <div class="faq-item" data-q="where is my data stored security">
-      <div class="faq-question" onclick="toggleFAQ(this)">Where is my data stored? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Your data is stored on secure, encrypted servers. Payments are handled by Stripe — we never store your full card details. See our <a href="privacy.html">Privacy Policy</a> for full details.</p></div>
-    </div>
-  </div>
-
-  <!-- TROUBLESHOOTING -->
-  <div class="help-section" id="troubleshoot">
-    <div class="help-section-title">Troubleshooting</div>
-    <div class="faq-item" data-q="scrape not working error loading slow">
-      <div class="faq-question" onclick="toggleFAQ(this)">My scrape isn't returning results <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Check that your search query is specific enough (e.g., "plumbers in Manchester" rather than just "plumbers"). If the issue persists, try refreshing the page or contact us via the chat bot.</p></div>
-    </div>
-    <div class="faq-item" data-q="export not working download failed csv">
-      <div class="faq-question" onclick="toggleFAQ(this)">My export isn't downloading <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Make sure your browser allows downloads from our site. Try disabling ad blockers temporarily. If the issue continues, reach out through our chat assistant below.</p></div>
-    </div>
-    <div class="faq-item" data-q="bug report issue feedback">
-      <div class="faq-question" onclick="toggleFAQ(this)">How do I report a bug? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer"><p>Use the chat bot below or email us at <a href="mailto:support@clientsniper.com">support@clientsniper.com</a> with a description of the issue, your browser, and any screenshots. We usually respond within 24 hours.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- AI CHATBOT TOGGLE -->
-<div class="chat-toggle" id="chatToggle" onclick="toggleChat()">💬</div>
-
-<!-- AI CHATBOT WINDOW -->
-<div class="chat-window" id="chatWindow">
-  <div class="chat-header">
-    <h4>SniperBot</h4>
-    <span class="chat-close" onclick="toggleChat()">&times;</span>
-  </div>
-  <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg bot">Hey! 👋 I'm SniperBot — your AI help assistant. Ask me anything about ClientSniper and I'll do my best to help.</div>
-  </div>
-  <div class="chat-input-row">
-    <input type="text" id="chatInput" placeholder="Type your question…" onkeydown="if(event.key==='Enter')sendChat()">
-    <button class="chat-send" onclick="sendChat()">Send</button>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
-      <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google Maps &amp; Instagram in minutes.</p>
-      <div class="footer-social">
-        <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
-        <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
-        <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-        <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
+  <!-- CATEGORIES -->
+  <div class="help-container">
+    <div class="help-cats">
+      <div class="help-cat" onclick="scrollToSection('getting-started')">
+        <div class="cat-icon">🚀</div>
+        <h3>Getting Started</h3>
+        <p>Account setup, first scrape, and navigation basics</p>
+      </div>
+      <div class="help-cat" onclick="scrollToSection('maps-help')">
+        <div class="cat-icon">📍</div>
+        <h3>Google Maps</h3>
+        <p>Scraping, filters, exports, and data accuracy</p>
+      </div>
+      <div class="help-cat" onclick="scrollToSection('insta-help')">
+        <div class="cat-icon">📸</div>
+        <h3>Instagram</h3>
+        <p>Follower scraping, hashtag search, and DM data</p>
+      </div>
+      <div class="help-cat" onclick="scrollToSection('billing-help')">
+        <div class="cat-icon">💳</div>
+        <h3>Billing &amp; Plans</h3>
+        <p>Subscriptions, upgrades, cancellations, and invoices</p>
+      </div>
+      <div class="help-cat" onclick="scrollToSection('data-help')">
+        <div class="cat-icon">🔒</div>
+        <h3>Data &amp; Privacy</h3>
+        <p>Your data, compliance, and account deletion</p>
+      </div>
+      <div class="help-cat" onclick="scrollToSection('troubleshoot')">
+        <div class="cat-icon">🛠️</div>
+        <h3>Troubleshooting</h3>
+        <p>Errors, performance issues, and bug reports</p>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="index.html#products">Google Maps Scraper</a>
-      <a href="index.html#insta-preview">Instagram Scraper</a>
-      <a href="features.html">All Features</a>
-      <a href="payment.html">Pricing</a>
+
+    <!-- GETTING STARTED -->
+    <div class="help-section" id="getting-started">
+      <div class="help-section-title">Getting Started</div>
+      <div class="faq-item" data-q="how do i create an account sign up register">
+        <div class="faq-question" onclick="toggleFAQ(this)">How do I create an account? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Head to our <a href="payment.html">Pricing page</a>, choose a plan, and click "Start Free Trial". You'll
+            have 30 days free to explore everything — no card charged until the trial ends.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="how does the free trial work 30 days">
+        <div class="faq-question" onclick="toggleFAQ(this)">How does the 30-day free trial work? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>You get full access to your chosen plan for 30 days. If you cancel before the trial ends, you won't be
+            charged. Otherwise, your subscription starts automatically.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="what can i do first scrape getting started">
+        <div class="faq-question" onclick="toggleFAQ(this)">What should I do after signing up? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>After signing up, you'll land on your dashboard. Try your first scrape — enter a niche and location in
+            Google Maps Scraper to pull your first batch of leads. Export them as CSV and you're off.</p>
+        </div>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="index.html#about">About Us</a>
-      <a href="index.html#blog">Blog</a>
-      <a href="index.html#forum">Forum</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="help.html">Help Centre</a>
+
+    <!-- MAPS -->
+    <div class="help-section" id="maps-help">
+      <div class="help-section-title">Google Maps</div>
+      <div class="faq-item" data-q="how many leads can i scrape google maps limit">
+        <div class="faq-question" onclick="toggleFAQ(this)">How many leads can I scrape at once? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Each scrape can return up to 500 leads per search query. You can run multiple queries back-to-back —
+            there's no daily cap on your plan.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="what data does maps scraper return fields email phone">
+        <div class="faq-question" onclick="toggleFAQ(this)">What data fields are included? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Business name, address, phone number, website, email (when available), Google rating, review count,
+            business category, and Google Maps URL.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="export csv download data format">
+        <div class="faq-question" onclick="toggleFAQ(this)">Can I export leads as CSV? <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes — one click and your leads download as a clean CSV file ready for your CRM, email tool, or spreadsheet.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="accuracy data quality verified emails">
+        <div class="faq-question" onclick="toggleFAQ(this)">How accurate is the data? <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We pull live data directly from Google Maps, so it's as current as Google's own listings. Email accuracy
+            depends on the business having a public email listed. We recommend verifying emails before sending
+            campaigns.</p>
+        </div>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="cookies.html">Cookie Policy</a>
+
+    <!-- INSTAGRAM -->
+    <div class="help-section" id="insta-help">
+      <div class="help-section-title">Instagram</div>
+      <div class="faq-item" data-q="instagram scraper how does it work followers hashtags">
+        <div class="faq-question" onclick="toggleFAQ(this)">How does the Instagram scraper work? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Enter a hashtag, location, or competitor account. We'll scrape public profile data including usernames,
+            bios, follower counts, emails (from bios), and website links.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="is instagram scraping legal allowed terms">
+        <div class="faq-question" onclick="toggleFAQ(this)">Is Instagram scraping allowed? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>We only scrape publicly available data. You are responsible for how you use the data. We recommend
+            reviewing Instagram's terms and your local data protection laws before outreach campaigns.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="scrape competitor followers audience">
+        <div class="faq-question" onclick="toggleFAQ(this)">Can I scrape a competitor's followers? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Yes — enter any public account and we'll pull their follower list with profile details. Great for finding
+            warm audiences in your niche.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BILLING -->
+    <div class="help-section" id="billing-help">
+      <div class="help-section-title">Billing &amp; Plans</div>
+      <div class="faq-item" data-q="cancel subscription how to cancel">
+        <div class="faq-question" onclick="toggleFAQ(this)">How do I cancel my subscription? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Go to your account settings and click "Cancel Plan". Your access continues until the end of the current
+            billing period. No partial refunds.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="upgrade downgrade switch plan change">
+        <div class="faq-question" onclick="toggleFAQ(this)">Can I switch plans? <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Yes — upgrade or downgrade anytime from your account settings. Changes take effect at the next billing
+            cycle. Upgrades are prorated.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="yearly annual billing discount save">
+        <div class="faq-question" onclick="toggleFAQ(this)">Is there a yearly discount? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Yes! Yearly plans save you 20% compared to monthly billing. Check our <a href="payment.html">Pricing
+              page</a> for the exact amounts.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="payment methods card stripe">
+        <div class="faq-question" onclick="toggleFAQ(this)">What payment methods do you accept? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>We accept all major credit and debit cards through Stripe — Visa, Mastercard, Amex, and more.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATA & PRIVACY -->
+    <div class="help-section" id="data-help">
+      <div class="help-section-title">Data &amp; Privacy</div>
+      <div class="faq-item" data-q="delete my account data removal gdpr">
+        <div class="faq-question" onclick="toggleFAQ(this)">Can I delete my account and data? <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Yes. Contact us at <a href="mailto:privacy@clientsniper.com">privacy@clientsniper.com</a> and we'll delete
+            your account and personal data within 30 days, as required under UK GDPR.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="where is my data stored security">
+        <div class="faq-question" onclick="toggleFAQ(this)">Where is my data stored? <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Your data is stored on secure, encrypted servers. Payments are handled by Stripe — we never store your full
+            card details. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TROUBLESHOOTING -->
+    <div class="help-section" id="troubleshoot">
+      <div class="help-section-title">Troubleshooting</div>
+      <div class="faq-item" data-q="scrape not working error loading slow">
+        <div class="faq-question" onclick="toggleFAQ(this)">My scrape isn't returning results <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Check that your search query is specific enough (e.g., "plumbers in Manchester" rather than just
+            "plumbers"). If the issue persists, try refreshing the page or contact us via the chat bot.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="export not working download failed csv">
+        <div class="faq-question" onclick="toggleFAQ(this)">My export isn't downloading <span
+            class="faq-toggle">+</span></div>
+        <div class="faq-answer">
+          <p>Make sure your browser allows downloads from our site. Try disabling ad blockers temporarily. If the issue
+            continues, reach out through our chat assistant below.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-q="bug report issue feedback">
+        <div class="faq-question" onclick="toggleFAQ(this)">How do I report a bug? <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Use the chat bot below or email us at <a
+              href="mailto:support@clientsniper.com">support@clientsniper.com</a> with a description of the issue, your
+            browser, and any screenshots. We usually respond within 24 hours.</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>&copy; 2025 ClientSniper. All rights reserved.</span>
-    <span>Built with precision. 🎯</span>
+
+  <!-- AI CHATBOT TOGGLE -->
+  <div class="chat-toggle" id="chatToggle" onclick="toggleChat()">💬</div>
+
+  <!-- AI CHATBOT WINDOW -->
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <h4>SniperBot</h4>
+      <span class="chat-close" onclick="toggleChat()">&times;</span>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Hey! 👋 I'm SniperBot — your AI help assistant. Ask me anything about ClientSniper and
+        I'll do my best to help.</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Type your question…" onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="chat-send" onclick="sendChat()">Send</button>
+    </div>
   </div>
-</footer>
 
-<script>
-/* FAQ Toggle */
-function toggleFAQ(el){
-  const item=el.parentElement;
-  const wasOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!wasOpen) item.classList.add('open');
-}
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
+        <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google
+          Maps &amp; Instagram in minutes.</p>
+        <div class="footer-social">
+          <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
+          <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
+          <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+            </svg></a>
+          <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="index.html#products">Google Maps Scraper</a>
+        <a href="index.html#insta-preview">Instagram Scraper</a>
+        <a href="features.html">All Features</a>
+        <a href="payment.html">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="blog.html">Blog</a>
+        <a href="forum.html">Forum</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="help.html">Help Centre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 ClientSniper. All rights reserved.</span>
+      <span>Built with precision. 🎯</span>
+    </div>
+  </footer>
 
-/* FAQ Search Filter */
-function filterFAQ(query){
-  const q=query.toLowerCase().trim();
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    const keywords=item.getAttribute('data-q')||'';
-    const text=item.querySelector('.faq-question').textContent.toLowerCase();
-    const answer=item.querySelector('.faq-answer').textContent.toLowerCase();
-    const match=!q||keywords.includes(q)||text.includes(q)||answer.includes(q);
-    item.style.display=match?'':'none';
-  });
-  document.querySelectorAll('.help-section').forEach(sec=>{
-    const visibleItems=sec.querySelectorAll('.faq-item[style=""], .faq-item:not([style])');
-    const hasVisible=[...sec.querySelectorAll('.faq-item')].some(i=>i.style.display!=='none');
-    sec.style.display=hasVisible?'':'none';
-  });
-}
-
-/* Scroll to section */
-function scrollToSection(id){
-  const el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-/* Chatbot */
-function toggleChat(){
-  document.getElementById('chatWindow').classList.toggle('open');
-}
-
-const faqData=[
-  {q:['create account','sign up','register','get started'],a:'Head to our <a href="payment.html">Pricing page</a>, choose a plan, and start your 30-day free trial. No card charged until the trial ends.'},
-  {q:['free trial','30 day','trial work'],a:'You get full access for 30 days. Cancel before the trial ends and you won\'t pay a thing.'},
-  {q:['cancel','cancellation','unsubscribe'],a:'Go to your account settings and click "Cancel Plan". You keep access until the end of your billing period.'},
-  {q:['price','pricing','cost','how much','plan'],a:'We have Maps (£30/mo), Instagram (£30/mo), and Bundle (£54.99/mo). Yearly saves 20%. See our <a href="payment.html">Pricing page</a>.'},
-  {q:['maps','google maps','scrape maps'],a:'Enter a niche and location, hit scrape, and get up to 500 verified leads with names, emails, phones, and more. Export as CSV instantly.'},
-  {q:['instagram','insta','scrape instagram'],a:'Search by hashtag, location, or competitor account. We pull public profile data including usernames, bios, emails, and follower counts.'},
-  {q:['export','csv','download'],a:'One-click CSV export. Your leads download as a clean spreadsheet ready for your CRM or email tool.'},
-  {q:['data','accuracy','verified','quality'],a:'We pull live data from the source. Google Maps data is as current as Google\'s own listings. We recommend verifying emails before campaigns.'},
-  {q:['delete','remove','gdpr','data removal'],a:'Email privacy@clientsniper.com and we\'ll delete your account and data within 30 days under UK GDPR.'},
-  {q:['payment','card','stripe','pay'],a:'We accept all major credit and debit cards through Stripe — Visa, Mastercard, Amex, and more.'},
-  {q:['upgrade','downgrade','switch','change plan'],a:'Switch plans anytime from account settings. Changes take effect next billing cycle. Upgrades are prorated.'},
-  {q:['yearly','annual','discount','save'],a:'Yearly plans save 20%. Maps & Instagram are £288/yr (£24/mo). Bundle is £527.88/yr (£43.99/mo).'},
-  {q:['bug','error','not working','broken','issue'],a:'Sorry to hear that! Please describe the issue — your browser, what happened, and any error messages. You can also email support@clientsniper.com with screenshots.'},
-  {q:['contact','support','email','help','human'],a:'Email us at support@clientsniper.com or use the contact form on our <a href="index.html#contact">homepage</a>. We usually respond within 24 hours.'},
-  {q:['hello','hi','hey','sup','yo'],a:'Hey! 👋 What can I help you with today?'},
-  {q:['thank','thanks','cheers','ta'],a:'No problem at all! Let me know if you have any other questions. 🎯'},
-  {q:['ben','finn','founder','who made','who built'],a:'ClientSniper was built by Ben and Finn — two mates who love sales and got tired of outdated lead gen methods. You can read their story on our <a href="index.html#about">About page</a>.'},
-  {q:['bundle','both','maps and instagram'],a:'The Bundle gives you both Maps and Instagram scraping for £54.99/mo (or £527.88/yr). That\'s a 20% saving vs buying both separately.'},
-];
-
-function sendChat(){
-  const input=document.getElementById('chatInput');
-  const msg=input.value.trim();
-  if(!msg) return;
-  input.value='';
-  addMessage(msg,'user');
-  showTyping();
-  setTimeout(()=>{
-    removeTyping();
-    const reply=getBotReply(msg);
-    addMessage(reply,'bot');
-  },800+Math.random()*600);
-}
-
-function addMessage(text,type){
-  const div=document.createElement('div');
-  div.className='chat-msg '+type;
-  div.innerHTML=text;
-  const box=document.getElementById('chatMessages');
-  box.appendChild(div);
-  box.scrollTop=box.scrollHeight;
-}
-
-function showTyping(){
-  const div=document.createElement('div');
-  div.className='chat-msg bot typing-indicator';
-  div.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
-  const box=document.getElementById('chatMessages');
-  box.appendChild(div);
-  box.scrollTop=box.scrollHeight;
-}
-
-function removeTyping(){
-  const el=document.querySelector('.typing-indicator');
-  if(el) el.remove();
-}
-
-function getBotReply(msg){
-  const lower=msg.toLowerCase();
-  let bestMatch=null;
-  let bestScore=0;
-  for(const item of faqData){
-    let score=0;
-    for(const keyword of item.q){
-      if(lower.includes(keyword)) score+=keyword.length;
+  <script>
+    /* FAQ Toggle */
+    function toggleFAQ(el) {
+      const item = el.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
     }
-    if(score>bestScore){bestScore=score;bestMatch=item;}
-  }
-  if(bestMatch&&bestScore>2) return bestMatch.a;
-  return "I'm not sure about that one — but our team can help! Email <a href='mailto:support@clientsniper.com'>support@clientsniper.com</a> or use the <a href='index.html#contact'>contact form</a> and we'll get back to you within 24 hours.";
-}
-</script>
+
+    /* FAQ Search Filter */
+    function filterFAQ(query) {
+      const q = query.toLowerCase().trim();
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const keywords = item.getAttribute('data-q') || '';
+        const text = item.querySelector('.faq-question').textContent.toLowerCase();
+        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+        const match = !q || keywords.includes(q) || text.includes(q) || answer.includes(q);
+        item.style.display = match ? '' : 'none';
+      });
+      document.querySelectorAll('.help-section').forEach(sec => {
+        const visibleItems = sec.querySelectorAll('.faq-item[style=""], .faq-item:not([style])');
+        const hasVisible = [...sec.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+        sec.style.display = hasVisible ? '' : 'none';
+      });
+    }
+
+    /* Scroll to section */
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* Chatbot */
+    function toggleChat() {
+      document.getElementById('chatWindow').classList.toggle('open');
+    }
+
+    const faqData = [
+      { q: ['create account', 'sign up', 'register', 'get started'], a: 'Head to our <a href="payment.html">Pricing page</a>, choose a plan, and start your 30-day free trial. No card charged until the trial ends.' },
+      { q: ['free trial', '30 day', 'trial work'], a: 'You get full access for 30 days. Cancel before the trial ends and you won\'t pay a thing.' },
+      { q: ['cancel', 'cancellation', 'unsubscribe'], a: 'Go to your account settings and click "Cancel Plan". You keep access until the end of your billing period.' },
+      { q: ['price', 'pricing', 'cost', 'how much', 'plan'], a: 'We have Maps (£30/mo), Instagram (£30/mo), and Bundle (£54.99/mo). Yearly saves 20%. See our <a href="payment.html">Pricing page</a>.' },
+      { q: ['maps', 'google maps', 'scrape maps'], a: 'Enter a niche and location, hit scrape, and get up to 500 verified leads with names, emails, phones, and more. Export as CSV instantly.' },
+      { q: ['instagram', 'insta', 'scrape instagram'], a: 'Search by hashtag, location, or competitor account. We pull public profile data including usernames, bios, emails, and follower counts.' },
+      { q: ['export', 'csv', 'download'], a: 'One-click CSV export. Your leads download as a clean spreadsheet ready for your CRM or email tool.' },
+      { q: ['data', 'accuracy', 'verified', 'quality'], a: 'We pull live data from the source. Google Maps data is as current as Google\'s own listings. We recommend verifying emails before campaigns.' },
+      { q: ['delete', 'remove', 'gdpr', 'data removal'], a: 'Email privacy@clientsniper.com and we\'ll delete your account and data within 30 days under UK GDPR.' },
+      { q: ['payment', 'card', 'stripe', 'pay'], a: 'We accept all major credit and debit cards through Stripe — Visa, Mastercard, Amex, and more.' },
+      { q: ['upgrade', 'downgrade', 'switch', 'change plan'], a: 'Switch plans anytime from account settings. Changes take effect next billing cycle. Upgrades are prorated.' },
+      { q: ['yearly', 'annual', 'discount', 'save'], a: 'Yearly plans save 20%. Maps & Instagram are £288/yr (£24/mo). Bundle is £527.88/yr (£43.99/mo).' },
+      { q: ['bug', 'error', 'not working', 'broken', 'issue'], a: 'Sorry to hear that! Please describe the issue — your browser, what happened, and any error messages. You can also email support@clientsniper.com with screenshots.' },
+      { q: ['contact', 'support', 'email', 'help', 'human'], a: 'Email us at support@clientsniper.com or use the contact form on our <a href="index.html#contact">homepage</a>. We usually respond within 24 hours.' },
+      { q: ['hello', 'hi', 'hey', 'sup', 'yo'], a: 'Hey! 👋 What can I help you with today?' },
+      { q: ['thank', 'thanks', 'cheers', 'ta'], a: 'No problem at all! Let me know if you have any other questions. 🎯' },
+      { q: ['ben', 'finn', 'founder', 'who made', 'who built'], a: 'ClientSniper was built by Ben and Finn — two mates who love sales and got tired of outdated lead gen methods. You can read their story on our <a href="index.html#about">About page</a>.' },
+      { q: ['bundle', 'both', 'maps and instagram'], a: 'The Bundle gives you both Maps and Instagram scraping for £54.99/mo (or £527.88/yr). That\'s a 20% saving vs buying both separately.' },
+    ];
+
+    function sendChat() {
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+      input.value = '';
+      addMessage(msg, 'user');
+      showTyping();
+      setTimeout(() => {
+        removeTyping();
+        const reply = getBotReply(msg);
+        addMessage(reply, 'bot');
+      }, 800 + Math.random() * 600);
+    }
+
+    function addMessage(text, type) {
+      const div = document.createElement('div');
+      div.className = 'chat-msg ' + type;
+      div.innerHTML = text;
+      const box = document.getElementById('chatMessages');
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'chat-msg bot typing-indicator';
+      div.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+      const box = document.getElementById('chatMessages');
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function removeTyping() {
+      const el = document.querySelector('.typing-indicator');
+      if (el) el.remove();
+    }
+
+    function getBotReply(msg) {
+      const lower = msg.toLowerCase();
+      let bestMatch = null;
+      let bestScore = 0;
+      for (const item of faqData) {
+        let score = 0;
+        for (const keyword of item.q) {
+          if (lower.includes(keyword)) score += keyword.length;
+        }
+        if (score > bestScore) { bestScore = score; bestMatch = item; }
+      }
+      if (bestMatch && bestScore > 2) return bestMatch.a;
+      return "I'm not sure about that one — but our team can help! Email <a href='mailto:support@clientsniper.com'>support@clientsniper.com</a> or use the <a href='index.html#contact'>contact form</a> and we'll get back to you within 24 hours.";
+    }
+  </script>
 
 </body>
+
 </html>

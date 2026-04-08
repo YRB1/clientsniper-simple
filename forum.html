@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Forum — ClientSniper</title>
+<meta name="description" content="Join the ClientSniper community. Share strategies, ask questions, post wins, and connect with other lead generation pros.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+/* ═══ DARK (DEFAULT) ═══ */
+:root,[data-theme="dark"]{
+  --bg:#030507;--bg2:#0a0d10;--surface:#0e1114;--surface2:#151a1f;
+  --card:#0e1114;--card-hover:#151a1f;
+  --border:#1a1e24;--border-light:#1a1e24;
+  --gold:#C9A465;--gold-dim:#8a6d3b;--gold-bg:rgba(201,164,101,.06);--gold-border:rgba(201,164,101,.15);
+  --text:#F0EBE0;--text-mid:#b5b0a5;--text-dim:#8a8578;
+  --maps:#2DBD6E;--insta:#E1306C;--tech:#A259FF;--red:#DC3545;
+  --nav-bg:rgba(3,5,7,.88);--nav-border:rgba(201,164,101,.06);
+  --footer-bg:#030507;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.3);
+  --shadow-md:0 4px 20px rgba(0,0,0,.4);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.5);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+}
+
+/* ═══ LIGHT ═══ */
+[data-theme="light"]{
+  --bg:#FAF8F4;--bg2:#F5F2EC;--surface:#EFECE5;--surface2:#E8E4DC;
+  --card:#FFFFFF;--card-hover:#FDFCFA;
+  --border:#DDD9D0;--border-light:#E8E5DD;
+  --gold:#B08A30;--gold-dim:#8a6d2a;--gold-bg:rgba(176,138,48,.07);--gold-border:rgba(176,138,48,.2);
+  --text:#1C1B18;--text-mid:#4A4840;--text-dim:#8A8880;
+  --maps:#1A9B50;--insta:#C13584;--tech:#7C3AED;--red:#DC3545;
+  --nav-bg:rgba(20,18,14,.94);--nav-border:rgba(201,164,101,.1);
+  --footer-bg:#141210;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.1);
+}
+
+html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:var(--sans);transition:background .4s,color .4s}
+body{overflow-x:hidden;background:var(--bg);transition:background .4s}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--gold),var(--gold-dim));border-radius:2px}
+
+/* CURSOR */
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(201,164,101,.4);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+.cursor-ring::before,.cursor-ring::after{content:'';position:absolute;background:rgba(201,164,101,.35)}
+.cursor-ring::before{width:1px;height:6px;top:-4px;left:50%;transform:translateX(-50%)}
+.cursor-ring::after{width:6px;height:1px;left:-4px;top:50%;transform:translateY(-50%)}
+.cursor-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
+.cursor-ring.hover{width:52px;height:52px;border-color:var(--gold)}
+@media(pointer:coarse){.cursor-ring,.cursor-dot{display:none}}
+[data-theme="light"] .cursor-ring,[data-theme="light"] .cursor-dot{display:none}
+
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(201,164,101,.5),transparent 70%);animation:particleFloat linear infinite;pointer-events:none}
+@keyframes particleFloat{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+[data-theme="light"] #particles{display:none}
+body::before{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.45) 100%)}
+[data-theme="light"] body::before{background:none}
+
+/* ═══ NAV (ALWAYS DARK) ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--nav-border);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.nav-logo{font-family:var(--serif);font-size:1.4rem;color:var(--gold);letter-spacing:2px;font-weight:700}
+.nav-logo span{color:#F0EBE0}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(240,235,224,.5);transition:color .3s;font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{padding:10px 28px;border:1px solid var(--gold);color:var(--gold);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:all .3s}
+.nav-cta:hover{background:var(--gold);color:#030507;box-shadow:0 4px 20px rgba(201,164,101,.25)}
+.theme-toggle{width:38px;height:38px;border:1px solid rgba(201,164,101,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#F0EBE0;cursor:pointer;transition:border-color .3s,transform .3s;background:rgba(255,255,255,.04);margin-left:8px}
+.theme-toggle:hover{border-color:var(--gold);transform:scale(1.08)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.burger span{width:24px;height:1.5px;background:#F0EBE0;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mobile-drawer{position:fixed;inset:0;z-index:999;background:rgba(3,5,7,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.mobile-drawer.open{opacity:1;visibility:visible}
+.mobile-drawer a{font-size:1.1rem;color:rgba(240,235,224,.5);letter-spacing:2px;text-transform:uppercase;transition:color .3s;font-weight:500}
+.mobile-drawer a:hover{color:var(--gold)}
+@media(max-width:900px){.nav-links,.nav-cta{display:none}.burger{display:flex}}
+
+/* HERO */
+.page-hero{padding:145px 24px 48px;text-align:center;position:relative;z-index:5;background:linear-gradient(180deg,rgba(201,164,101,.03) 0%,transparent 60%);transition:background .4s}
+.page-hero .tag{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600}
+.page-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;margin-bottom:16px;line-height:1.1}
+[data-theme="dark"] .page-hero h1 .outline{-webkit-text-stroke:1.5px var(--gold);color:transparent;filter:drop-shadow(0 0 12px rgba(201,164,101,.25))}
+[data-theme="light"] .page-hero h1 .outline{color:var(--gold)}
+.page-hero p{color:var(--text-dim);max-width:580px;margin:0 auto;line-height:1.8;font-size:.95rem}
+
+/* HERO STATS */
+.forum-hero-stats{display:flex;gap:40px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.fh-stat{text-align:center}
+.fh-stat .fh-num{font-family:var(--serif);font-size:1.9rem;color:var(--gold);font-weight:700}
+.fh-stat .fh-label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-top:2px;font-weight:500}
+
+/* SECTION */
+.section{padding:48px 24px;position:relative;z-index:5}
+.container{max-width:1200px;margin:0 auto}
+
+/* CATEGORY PILLS */
+.cat-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.cat-pill{padding:9px 20px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);font-size:.74rem;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:8px;font-family:var(--sans);border-radius:100px;font-weight:500}
+.cat-pill:hover{border-color:var(--gold-border);color:var(--text-mid)}
+.cat-pill.active{border-color:var(--gold);color:var(--gold);background:var(--gold-bg);font-weight:600}
+.cat-pill .cat-count{background:var(--surface);padding:2px 8px;border-radius:10px;font-size:.62rem;color:var(--text-dim);font-weight:600}
+.cat-pill.active .cat-count{background:rgba(201,164,101,.12);color:var(--gold)}
+
+/* TOOLBAR */
+.forum-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.forum-search{display:flex;flex:1;max-width:380px}
+.forum-search input{width:100%;padding:10px 16px;background:var(--card);border:1px solid var(--border);color:var(--text);font-size:.85rem;font-family:var(--sans);transition:border-color .3s;box-shadow:var(--shadow-sm)}
+[data-theme="light"] .forum-search input{border-radius:8px}
+.forum-search input:focus{outline:none;border-color:var(--gold)}
+.sort-tabs{display:flex;gap:4px}
+.sort-tab{padding:8px 16px;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);background:var(--card);cursor:pointer;transition:all .3s;font-family:var(--sans);font-weight:500}
+[data-theme="light"] .sort-tab{border-radius:6px}
+.sort-tab:hover{border-color:var(--gold-border);color:var(--text-mid)}
+.sort-tab.active{border-color:var(--gold);color:var(--gold);background:var(--gold-bg);font-weight:600}
+.new-thread-btn{padding:10px 24px;background:var(--gold);color:#030507;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:var(--sans)}
+[data-theme="light"] .new-thread-btn{border-radius:8px}
+.new-thread-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,164,101,.3)}
+
+/* LAYOUT */
+.forum-layout{display:grid;grid-template-columns:1fr 310px;gap:28px;align-items:flex-start}
+@media(max-width:900px){.forum-layout{grid-template-columns:1fr}}
+
+/* THREADS */
+.thread-list{display:flex;flex-direction:column;gap:10px}
+.thread{background:var(--card);border:1px solid var(--border);padding:22px 24px;display:flex;gap:18px;align-items:flex-start;transition:border-color .3s,transform .3s,box-shadow .3s,background .4s;cursor:pointer;box-shadow:var(--shadow-sm)}
+[data-theme="light"] .thread{border-radius:12px}
+.thread:hover{border-color:var(--gold-border);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.thread.pinned{border-left:3px solid var(--gold)}
+
+.thread-votes{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0;min-width:48px}
+.vote-btn{font-size:.8rem;color:var(--text-dim);cursor:pointer;transition:color .2s;padding:4px 8px;background:none;border:none;font-family:var(--sans);border-radius:4px}
+.vote-btn:hover{color:var(--gold);background:var(--gold-bg)}
+.vote-btn.upvoted{color:var(--gold)}
+.vote-count{font-family:var(--serif);font-size:1.5rem;color:var(--gold);line-height:1;font-weight:700}
+.vote-label{font-size:.55rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);font-weight:500}
+
+.thread-content{flex:1;min-width:0}
+.thread-header{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap}
+.pin-badge{font-size:.58rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);padding:3px 10px;border-radius:100px;font-weight:600;border:1px solid var(--gold-border)}
+.solved-badge{font-size:.58rem;letter-spacing:1px;text-transform:uppercase;color:var(--maps);background:rgba(45,189,110,.08);padding:3px 10px;border-radius:100px;font-weight:600;border:1px solid rgba(45,189,110,.2)}
+.thread-content h3{font-size:.95rem;margin-bottom:5px;line-height:1.45;transition:color .3s;font-weight:600}
+.thread:hover h3{color:var(--gold)}
+.thread-content p{font-size:.82rem;color:var(--text-dim);line-height:1.55;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.thread-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.thread-tag{font-size:.58rem;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border:1px solid var(--border);color:var(--text-dim);border-radius:100px;transition:border-color .2s;font-weight:500}
+.thread-tag.hot{border-color:rgba(220,53,69,.25);color:var(--red);background:rgba(220,53,69,.04)}
+.thread-tag.new{border-color:rgba(45,189,110,.25);color:var(--maps);background:rgba(45,189,110,.04)}
+.thread-meta{display:flex;gap:12px;font-size:.72rem;color:var(--text-dim);align-items:center;flex-wrap:wrap}
+.thread-meta .author-link{display:flex;align-items:center;gap:5px}
+.avatar-xs{width:20px;height:20px;border-radius:50%;background:var(--gold-bg);border:1.5px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:.5rem;color:var(--gold);font-weight:700}
+.thread-meta strong{color:var(--text);font-weight:600}
+.thread-meta .sep{color:var(--border)}
+.thread-stats{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0;min-width:52px;text-align:center}
+.thread-stats .stat-val{font-family:var(--serif);font-size:1.1rem;color:var(--text);font-weight:600}
+.thread-stats .stat-lbl{font-size:.52rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);font-weight:500}
+
+/* SIDEBAR */
+.forum-sidebar{display:flex;flex-direction:column;gap:20px}
+.sidebar-card{background:var(--card);border:1px solid var(--border);padding:22px;box-shadow:var(--shadow-sm);transition:box-shadow .3s,background .4s}
+[data-theme="light"] .sidebar-card{border-radius:14px}
+.sidebar-card:hover{box-shadow:var(--shadow-md)}
+.sidebar-card h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);font-weight:700}
+.community-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cs-item{text-align:center;padding:14px 8px;background:var(--bg2);border-radius:10px}
+.cs-item .cs-num{font-family:var(--serif);font-size:1.35rem;color:var(--gold);font-weight:700}
+.cs-item .cs-label{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-top:2px;font-weight:500}
+.leaderboard{display:flex;flex-direction:column;gap:8px}
+.leader{display:flex;align-items:center;gap:10px;padding:10px;background:var(--bg2);border-radius:10px;transition:background .3s}
+.leader:hover{background:var(--surface)}
+.leader-rank{font-family:var(--serif);font-size:1.15rem;color:var(--border);font-weight:700;min-width:22px;text-align:center}
+.leader-rank.gold{color:var(--gold)}
+.leader-avatar{width:30px;height:30px;border-radius:50%;background:var(--gold-bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);font-weight:700;flex-shrink:0}
+.leader-info{flex:1;min-width:0}
+.leader-info .leader-name{font-size:.8rem;font-weight:600}
+.leader-info .leader-pts{font-size:.68rem;color:var(--text-dim)}
+.trending-tags{display:flex;flex-wrap:wrap;gap:5px}
+.trend-tag{padding:5px 12px;border:1px solid var(--border);border-radius:100px;font-size:.65rem;letter-spacing:.5px;text-transform:uppercase;color:var(--text-dim);cursor:pointer;transition:all .2s;background:var(--bg2);font-weight:500}
+.trend-tag:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-bg)}
+.rules-list{display:flex;flex-direction:column;gap:10px}
+.rule{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--text-mid);line-height:1.55}
+.rule-num{font-family:var(--serif);font-size:1rem;color:var(--gold);font-weight:700;min-width:20px;flex-shrink:0;opacity:.5}
+
+/* PAGINATION */
+.pagination{display:flex;justify-content:center;gap:6px;margin-top:36px}
+.page-btn{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:var(--card);color:var(--text-dim);font-size:.82rem;cursor:pointer;transition:all .3s;font-family:var(--sans);font-weight:500}
+[data-theme="light"] .page-btn{border-radius:8px}
+.page-btn:hover{border-color:var(--gold-border);color:var(--text-mid)}
+.page-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-bg);font-weight:600}
+.page-btn.arrow{font-size:.68rem;letter-spacing:.5px;width:auto;padding:0 14px}
+
+/* DIVIDER */
+.section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent 5%,var(--border) 30%,var(--gold-border) 50%,var(--border) 70%,transparent 95%);position:relative;z-index:5;margin:10px 0}
+.section-divider::before{content:'✦';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg);padding:0 16px;color:var(--gold);font-size:.55rem;letter-spacing:4px;transition:background .4s}
+
+/* CTA — ALWAYS DARK */
+.forum-cta{text-align:center;padding:72px 24px;background:#0a0d10;position:relative;z-index:5}
+.forum-cta .section-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600}
+.forum-cta h2{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:12px;color:#F0EBE0}
+.forum-cta p{color:#8a8578;max-width:480px;margin:0 auto 28px;line-height:1.8;font-size:.92rem}
+.btn-primary{display:inline-block;padding:14px 36px;background:var(--gold);color:#030507;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,164,101,.3)}
+.btn-secondary{display:inline-block;padding:14px 36px;border:1px solid #1a1e24;color:#8a8578;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-weight:600;background:transparent}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ═══ FOOTER (ALWAYS DARK) ═══ */
+.footer{padding:72px 24px 36px;border-top:1px solid #1a1e24;background:var(--footer-bg)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto}
+.footer-brand{font-family:var(--serif);font-size:1.4rem;color:var(--gold);margin-bottom:14px;font-weight:700}
+.footer-brand-text{color:#8a8578;font-size:.85rem;line-height:1.7;max-width:280px}
+.footer-col h4{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:700}
+.footer-col a{display:block;font-size:.85rem;color:#8a8578;margin-bottom:10px;transition:color .3s}
+.footer-col a:hover{color:var(--gold)}
+.footer-social{display:flex;gap:12px;margin-top:18px}
+.footer-social a{width:36px;height:36px;border:1px solid #1a1e24;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#8a8578;transition:all .3s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-bottom{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid #1a1e24;display:flex;justify-content:space-between;font-size:.75rem;color:#8a8578}
+@media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div id="particles"></div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">Client<span>Sniper</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="blog.html">Blog</a>
+    <a href="forum.html" class="active">Forum</a>
+    <a href="payment.html">Plans</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <a href="payment.html" class="nav-cta">Get Started</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" onclick="toggleTheme()">☀️</button>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-drawer" id="drawer">
+  <a href="index.html" onclick="closeDrawer()">Home</a>
+  <a href="features.html" onclick="closeDrawer()">Features</a>
+  <a href="blog.html" onclick="closeDrawer()">Blog</a>
+  <a href="forum.html" onclick="closeDrawer()">Forum</a>
+  <a href="payment.html" onclick="closeDrawer()">Plans</a>
+  <a href="index.html#contact" onclick="closeDrawer()">Contact</a>
+  <a href="payment.html" class="nav-cta" onclick="closeDrawer()">Get Started</a>
+  <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="tag">Community Forum</div>
+  <h1>Connect. <span class="outline">Learn. Grow.</span></h1>
+  <p>Share strategies, ask questions, post wins, and connect with 2,400+ lead generation pros using ClientSniper every day.</p>
+  <div class="forum-hero-stats">
+    <div class="fh-stat"><div class="fh-num">2,847</div><div class="fh-label">Members</div></div>
+    <div class="fh-stat"><div class="fh-num">1,204</div><div class="fh-label">Threads</div></div>
+    <div class="fh-stat"><div class="fh-num">8,391</div><div class="fh-label">Replies</div></div>
+    <div class="fh-stat"><div class="fh-num">142</div><div class="fh-label">Online Now</div></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" style="padding-top:0;padding-bottom:16px">
+  <div class="container">
+    <div class="cat-row reveal">
+      <button class="cat-pill active" data-cat="all">🔥 All Threads <span class="cat-count">1,204</span></button>
+      <button class="cat-pill" data-cat="general">💬 General <span class="cat-count">312</span></button>
+      <button class="cat-pill" data-cat="maps">📍 Maps Tips <span class="cat-count">287</span></button>
+      <button class="cat-pill" data-cat="instagram">📸 Instagram <span class="cat-count">198</span></button>
+      <button class="cat-pill" data-cat="strategy">🧠 Strategy <span class="cat-count">224</span></button>
+      <button class="cat-pill" data-cat="showcase">🏆 Showcase <span class="cat-count">89</span></button>
+      <button class="cat-pill" data-cat="feature">✨ Feature Requests <span class="cat-count">94</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="forum-toolbar reveal">
+      <div class="forum-search"><input type="text" placeholder="Search threads..." id="forumSearch"></div>
+      <div class="sort-tabs">
+        <button class="sort-tab active">Hot</button>
+        <button class="sort-tab">New</button>
+        <button class="sort-tab">Top</button>
+        <button class="sort-tab">Unanswered</button>
+      </div>
+      <button class="new-thread-btn" onclick="alert('Sign in to create a thread')">+ New Thread</button>
+    </div>
+
+    <div class="forum-layout">
+      <div class="thread-list reveal" id="threadList">
+
+        <div class="thread pinned" data-cat="general"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">89</div><div class="vote-label">votes</div></div><div class="thread-content"><div class="thread-header"><span class="pin-badge">📌 Pinned</span></div><h3>Welcome to the ClientSniper Community — Start Here!</h3><p>New here? Read this first. Community guidelines, how to get the most out of the forum, links to our best resources, and how to get verified user flair.</p><div class="thread-tags"><span class="thread-tag">welcome</span><span class="thread-tag">rules</span><span class="thread-tag">resources</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">B</span> <strong>Ben</strong></span><span class="sep">·</span><span>47 replies</span><span class="sep">·</span><span>Pinned 3 months ago</span></div></div><div class="thread-stats"><div class="stat-val">47</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="maps"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">47</div><div class="vote-label">votes</div></div><div class="thread-content"><div class="thread-header"><span class="thread-tag hot">🔥 Hot</span></div><h3>Best niches for Google Maps scraping in 2026?</h3><p>I've been killing it with dentists and plumbers, but looking for fresh verticals. What's working for everyone else?</p><div class="thread-tags"><span class="thread-tag">maps</span><span class="thread-tag">strategy</span><span class="thread-tag">niches</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">D</span> <strong>@dan_leads</strong></span><span class="sep">·</span><span>23 replies</span><span class="sep">·</span><span>2 hours ago</span></div></div><div class="thread-stats"><div class="stat-val">23</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="instagram"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">38</div><div class="vote-label">votes</div></div><div class="thread-content"><div class="thread-header"><span class="thread-tag hot">🔥 Hot</span><span class="solved-badge">✓ Solved</span></div><h3>How I closed £8K in one week using Instagram scraping</h3><p>Case study — scraped 300 fitness coaches, sent cold DMs, landed 4 web design clients. Full breakdown with screenshots inside.</p><div class="thread-tags"><span class="thread-tag">instagram</span><span class="thread-tag">case-study</span><span class="thread-tag">wins</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">S</span> <strong>@sophie_builds</strong></span><span class="sep">·</span><span>18 replies</span><span class="sep">·</span><span>5 hours ago</span></div></div><div class="thread-stats"><div class="stat-val">18</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="feature"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">31</div><div class="vote-label">votes</div></div><div class="thread-content"><h3>Feature request: bulk email verification after scraping</h3><p>Would love a one-click "verify all" button after scraping. Currently exporting and using a separate tool.</p><div class="thread-tags"><span class="thread-tag">feature-request</span><span class="thread-tag">maps</span><span class="thread-tag">verification</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">M</span> <strong>@outreach_mike</strong></span><span class="sep">·</span><span>12 replies</span><span class="sep">·</span><span>1 day ago</span></div></div><div class="thread-stats"><div class="stat-val">12</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="strategy"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">24</div><div class="vote-label">votes</div></div><div class="thread-content"><h3>Cold email subject lines that got me 45% open rates</h3><p>Been A/B testing subject lines for 3 months. Here are my top 10 performers with exact open rates for each.</p><div class="thread-tags"><span class="thread-tag">outreach</span><span class="thread-tag">email</span><span class="thread-tag">results</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">J</span> <strong>@jack_agency</strong></span><span class="sep">·</span><span>15 replies</span><span class="sep">·</span><span>1 day ago</span></div></div><div class="thread-stats"><div class="stat-val">15</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="general"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">19</div><div class="vote-label">votes</div></div><div class="thread-content"><div class="thread-header"><span class="solved-badge">✓ Solved</span></div><h3>New here — is the Bundle worth it over Maps only?</h3><p>I run a digital agency focused on local businesses. Mainly need Maps but Instagram sounds tempting. Worth the extra?</p><div class="thread-tags"><span class="thread-tag">beginner</span><span class="thread-tag">pricing</span><span class="thread-tag">advice</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">J</span> <strong>@jess_agency</strong></span><span class="sep">·</span><span>9 replies</span><span class="sep">·</span><span>1 day ago</span></div></div><div class="thread-stats"><div class="stat-val">9</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="showcase"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">16</div><div class="vote-label">votes</div></div><div class="thread-content"><div class="thread-header"><span class="thread-tag new">🆕 New</span></div><h3>🎉 Just landed my biggest client — £4,200/mo retainer!</h3><p>Scraped wedding photographers in Leeds, sent 50 personalised cold emails, got 8 replies, booked 3 calls, closed 1 big deal.</p><div class="thread-tags"><span class="thread-tag">win</span><span class="thread-tag">showcase</span><span class="thread-tag">maps</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">A</span> <strong>@alex_closes</strong></span><span class="sep">·</span><span>7 replies</span><span class="sep">·</span><span>6 hours ago</span></div></div><div class="thread-stats"><div class="stat-val">7</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="maps"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">14</div><div class="vote-label">votes</div></div><div class="thread-content"><h3>How to filter out low-quality leads before exporting?</h3><p>Getting lots of businesses with no website and no email. Is there a way to filter these out automatically?</p><div class="thread-tags"><span class="thread-tag">maps</span><span class="thread-tag">tips</span><span class="thread-tag">filters</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">R</span> <strong>@ryan_digital</strong></span><span class="sep">·</span><span>11 replies</span><span class="sep">·</span><span>2 days ago</span></div></div><div class="thread-stats"><div class="stat-val">11</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="instagram"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">11</div><div class="vote-label">votes</div></div><div class="thread-content"><h3>Best hashtags to scrape for e-commerce brands?</h3><p>Looking to offer web design to small e-commerce brands. What hashtags do you target on Instagram?</p><div class="thread-tags"><span class="thread-tag">instagram</span><span class="thread-tag">ecommerce</span><span class="thread-tag">scraping</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">L</span> <strong>@lisa_designs</strong></span><span class="sep">·</span><span>6 replies</span><span class="sep">·</span><span>3 days ago</span></div></div><div class="thread-stats"><div class="stat-val">6</div><div class="stat-lbl">replies</div></div></div>
+
+        <div class="thread" data-cat="general"><div class="thread-votes"><button class="vote-btn">▲</button><div class="vote-count">8</div><div class="vote-label">votes</div></div><div class="thread-content"><h3>Does the free trial require a credit card?</h3><p>Just want to confirm if I need to enter payment details to start the 30-day trial.</p><div class="thread-tags"><span class="thread-tag">trial</span><span class="thread-tag">billing</span></div><div class="thread-meta"><span class="author-link"><span class="avatar-xs">C</span> <strong>@CuriousUser</strong></span><span class="sep">·</span><span>3 replies</span><span class="sep">·</span><span>4 days ago</span></div></div><div class="thread-stats"><div class="stat-val">3</div><div class="stat-lbl">replies</div></div></div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="forum-sidebar reveal">
+        <div class="sidebar-card"><h4>Community Stats</h4><div class="community-stats"><div class="cs-item"><div class="cs-num">2.8k</div><div class="cs-label">Members</div></div><div class="cs-item"><div class="cs-num">142</div><div class="cs-label">Online</div></div><div class="cs-item"><div class="cs-num">1.2k</div><div class="cs-label">Threads</div></div><div class="cs-item"><div class="cs-num">8.4k</div><div class="cs-label">Replies</div></div></div></div>
+        <div class="sidebar-card"><h4>🏆 Top Contributors</h4><div class="leaderboard"><div class="leader"><span class="leader-rank gold">1</span><div class="leader-avatar">D</div><div class="leader-info"><div class="leader-name">@dan_leads</div><div class="leader-pts">847 pts · 92 posts</div></div></div><div class="leader"><span class="leader-rank gold">2</span><div class="leader-avatar">S</div><div class="leader-info"><div class="leader-name">@sophie_builds</div><div class="leader-pts">723 pts · 64 posts</div></div></div><div class="leader"><span class="leader-rank gold">3</span><div class="leader-avatar">M</div><div class="leader-info"><div class="leader-name">@outreach_mike</div><div class="leader-pts">651 pts · 58 posts</div></div></div><div class="leader"><span class="leader-rank">4</span><div class="leader-avatar">J</div><div class="leader-info"><div class="leader-name">@jack_agency</div><div class="leader-pts">589 pts · 47 posts</div></div></div><div class="leader"><span class="leader-rank">5</span><div class="leader-avatar">A</div><div class="leader-info"><div class="leader-name">@alex_closes</div><div class="leader-pts">412 pts · 35 posts</div></div></div></div></div>
+        <div class="sidebar-card"><h4>Trending Tags</h4><div class="trending-tags"><span class="trend-tag">cold-email</span><span class="trend-tag">dentists</span><span class="trend-tag">instagram</span><span class="trend-tag">case-study</span><span class="trend-tag">ai-generator</span><span class="trend-tag">maps-tips</span><span class="trend-tag">outreach</span><span class="trend-tag">pricing</span><span class="trend-tag">freelancer</span><span class="trend-tag">agency</span></div></div>
+        <div class="sidebar-card"><h4>Community Rules</h4><div class="rules-list"><div class="rule"><span class="rule-num">1</span> Be respectful and constructive</div><div class="rule"><span class="rule-num">2</span> No spam or self-promotion</div><div class="rule"><span class="rule-num">3</span> Share real results, not hype</div><div class="rule"><span class="rule-num">4</span> Search before posting duplicates</div><div class="rule"><span class="rule-num">5</span> Help others when you can</div></div></div>
+      </div>
+    </div>
+
+    <div class="pagination reveal">
+      <button class="page-btn arrow">← Prev</button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn">4</button><button class="page-btn">...</button><button class="page-btn">24</button><button class="page-btn arrow">Next →</button>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CTA -->
+<section class="forum-cta"><div class="container reveal"><div class="section-tag">Join Us</div><h2>Ready to Join the Community?</h2><p>Start your free trial to get full access to the forum, all tools, and a community of pros who share what works.</p><div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><a href="payment.html" class="btn-primary">Start Free Trial →</a><a href="blog.html" class="btn-secondary">Read the Blog</a></div></div></section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-brand">Client<span style="color:#F0EBE0">Sniper</span></div><p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google Maps &amp; Instagram in minutes.</p><div class="footer-social"><a href="javascript:void(0)" aria-label="Twitter">𝕏</a><a href="javascript:void(0)" aria-label="LinkedIn">in</a><a href="javascript:void(0)" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a><a href="javascript:void(0)" aria-label="YouTube">▶</a></div></div>
+    <div class="footer-col"><h4>Product</h4><a href="index.html#products">Google Maps Scraper</a><a href="index.html#insta-preview">Instagram Scraper</a><a href="features.html">All Features</a><a href="payment.html">Pricing</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="index.html#about">About Us</a><a href="blog.html">Blog</a><a href="forum.html">Forum</a><a href="index.html#contact">Contact</a><a href="help.html">Help Centre</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="cookies.html">Cookie Policy</a></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2025 ClientSniper. All rights reserved.</span><span>Built with precision. 🎯</span></div>
+</footer>
+
+<script>
+/* THEME */
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  const newTheme=isDark?'light':'dark';
+  html.setAttribute('data-theme',newTheme);
+  localStorage.setItem('cs-theme',newTheme);
+  document.querySelectorAll('.theme-toggle').forEach(b=>b.textContent=isDark?'🌙':'☀️');
+}
+(function(){const saved=localStorage.getItem('cs-theme');if(saved){document.documentElement.setAttribute('data-theme',saved);document.querySelectorAll('.theme-toggle').forEach(b=>b.textContent=saved==='light'?'🌙':'☀️')}})();
+
+/* PARTICLES */
+(function(){const c=document.getElementById('particles');if(!c)return;function spawn(){const p=document.createElement('div');p.className='particle';const s=Math.random()*3+1.5,d=Math.random()*12+10,l=Math.random()*100,dl=Math.random()*8;p.style.cssText=`width:${s}px;height:${s}px;left:${l}%;bottom:-10px;animation-duration:${d}s;animation-delay:${dl}s;opacity:0`;c.appendChild(p);setTimeout(()=>{if(p.parentNode)p.remove()},(d+dl)*1000)}for(let i=0;i<12;i++)spawn();setInterval(spawn,2000)})();
+
+/* CURSOR */
+(function(){const r=document.getElementById('cursorRing'),d=document.getElementById('cursorDot');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;d.style.left=mx+'px';d.style.top=my+'px'});(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(a)})();document.querySelectorAll('a,button,.thread,.cat-pill,.sort-tab,.trend-tag,.leader,.page-btn').forEach(el=>{el.addEventListener('mouseenter',()=>r.classList.add('hover'));el.addEventListener('mouseleave',()=>r.classList.remove('hover'))})})();
+
+/* NAV */
+window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40)});
+const burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');drawer.classList.toggle('open')});
+function closeDrawer(){burger.classList.remove('open');drawer.classList.remove('open')}
+
+/* REVEAL */
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* SORT */
+document.querySelectorAll('.sort-tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.sort-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active')})});
+
+/* CATEGORY FILTER */
+document.querySelectorAll('.cat-pill').forEach(pill=>{pill.addEventListener('click',()=>{document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));pill.classList.add('active');const cat=pill.dataset.cat;document.querySelectorAll('.thread').forEach(t=>{if(cat==='all'||t.dataset.cat===cat){t.style.display='';requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateY(0)'})}else{t.style.opacity='0';t.style.transform='translateY(6px)';setTimeout(()=>t.style.display='none',280)}})})});
+
+/* VOTES */
+document.querySelectorAll('.vote-btn').forEach(btn=>{btn.addEventListener('click',e=>{e.stopPropagation();const el=btn.parentElement.querySelector('.vote-count');if(btn.classList.contains('upvoted')){btn.classList.remove('upvoted');el.textContent=parseInt(el.textContent)-1}else{btn.classList.add('upvoted');el.textContent=parseInt(el.textContent)+1}})});
+
+/* PAGES */
+document.querySelectorAll('.page-btn:not(.arrow)').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.page-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')})});
+</script>
+</body>
+</html>
