@@ -245,7 +245,7 @@ def newsletter():
 # ─── Static File Catch-All (must be AFTER all API routes) ──
 @app.route('/<path:filename>')
 def static_files(filename):
-    allowed_ext = {'.html', '.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.webp', '.woff', '.woff2', '.ttf'}
+    allowed_ext = {'.html', '.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.webp', '.woff', '.woff2', '.ttf', '.mp4', '.webm'}
     ext = os.path.splitext(filename)[1].lower()
     if ext in allowed_ext or '.' not in filename:
         filepath = os.path.join('.', filename)

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plans &amp; Pricing — ClientSniper</title>
-<meta name="description" content="Simple, transparent pricing for ClientSniper's lead generation tools. Google Maps Scraper, Instagram Scraper, or both. 30-day free trial.">
+<meta name="description" content="Simple, transparent pricing for ClientSniper. Find local businesses with missing or poor websites, reach out instantly, and win more clients. 30-day free trial.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -253,6 +253,7 @@ ul{list-style:none}
   <div class="tag">Plans &amp; Pricing</div>
   <h1>Simple Pricing.<br><span class="outline">Serious Results.</span></h1>
   <p>No hidden fees. No per-lead costs. Every plan includes a 30-day free trial. Cancel anytime — no questions asked.</p>
+  <p style="margin-top:10px;font-size:.8rem;color:var(--text-dim)">Additional team members can be added to your workspace at <strong style="color:var(--gold)">£4/month per seat</strong>.</p>
   <div class="toggle-wrapper" id="toggleWrapper">
     <span class="toggle-label active" id="lblMonthly">Monthly</span>
     <div class="toggle-track" id="billingToggle" onclick="toggleBilling()">
@@ -268,74 +269,74 @@ ul{list-style:none}
   <div class="container reveal">
     <div class="pricing-grid">
 
-      <!-- MAPS -->
+      <!-- STARTER -->
       <div class="price-card" id="cardMaps">
         <div class="card-color maps-bar"></div>
-        <div class="plan-icon">📍</div>
-        <h3>Google Maps</h3>
-        <p class="plan-desc">Scrape verified leads from Google Maps. Perfect for local businesses, agencies &amp; freelancers.</p>
+        <div class="plan-icon">🔍</div>
+        <h3>Starter</h3>
+        <p class="plan-desc">Find local businesses with missing or poor websites. Perfect for freelancers getting started with client acquisition.</p>
         <div class="original-price" id="mapOriginal"></div>
         <div class="price" id="mapPrice">£30</div>
         <div class="price-period" id="mapPeriod">per month</div>
         <div class="trial">30-DAY FREE TRIAL INCLUDED</div>
         <div class="plan-features">
-          <div class="plan-feature"><span class="yes">✓</span>Unlimited Google Maps searches</div>
+          <div class="plan-feature"><span class="yes">✓</span>Unlimited local business searches</div>
+          <div class="plan-feature"><span class="yes">✓</span>Website analysis &amp; opportunity scoring</div>
+          <div class="plan-feature"><span class="yes">✓</span>Smart filters (no website, outdated, mobile)</div>
           <div class="plan-feature"><span class="yes">✓</span>Email &amp; phone extraction</div>
-          <div class="plan-feature"><span class="yes">✓</span>Real-time data verification</div>
           <div class="plan-feature"><span class="yes">✓</span>CSV &amp; Excel export</div>
-          <div class="plan-feature"><span class="yes">✓</span>CRM integrations (HubSpot, Salesforce)</div>
           <div class="plan-feature"><span class="yes">✓</span>Built-in pipeline CRM</div>
           <div class="plan-feature"><span class="yes">✓</span>Priority email support</div>
-          <div class="plan-feature"><span class="no">—</span>Instagram scraping</div>
-          <div class="plan-feature"><span class="no">—</span>AI Website Generator</div>
+          <div class="plan-feature"><span class="no">—</span>Outreach templates</div>
+          <div class="plan-feature"><span class="no">—</span>Auto outreach sequences</div>
         </div>
         <button class="price-btn" onclick="openCheckout('maps')">Start Free Trial</button>
       </div>
 
-      <!-- INSTAGRAM -->
+      <!-- OUTREACH -->
       <div class="price-card" id="cardInsta">
-        <div class="card-color insta-bar"></div>
-        <div class="plan-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--insta2)"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
-        <h3>Instagram</h3>
-        <p class="plan-desc">Scrape leads from Instagram profiles &amp; hashtags. Ideal for social media marketers &amp; agencies.</p>
+        <div class="card-color" style="height:3px;margin:-48px -32px 40px;background:linear-gradient(90deg,var(--gold),var(--ai))"></div>
+        <div class="plan-icon">✉️</div>
+        <h3>Outreach</h3>
+        <p class="plan-desc">Everything in Starter plus AI-generated outreach templates, email campaigns, follow-up tracking, and phone outreach.</p>
         <div class="original-price" id="instaOriginal"></div>
         <div class="price" id="instaPrice">£30</div>
         <div class="price-period" id="instaPeriod">per month</div>
         <div class="trial">30-DAY FREE TRIAL INCLUDED</div>
         <div class="plan-features">
-          <div class="plan-feature"><span class="yes">✓</span>Profile &amp; hashtag scraping</div>
-          <div class="plan-feature"><span class="yes">✓</span>Bio email extraction</div>
-          <div class="plan-feature"><span class="yes">✓</span>Engagement rate analytics</div>
-          <div class="plan-feature"><span class="yes">✓</span>Competitor follower scraping</div>
-          <div class="plan-feature"><span class="yes">✓</span>CSV &amp; Excel export</div>
+          <div class="plan-feature"><span class="yes">✓</span>Everything in Starter</div>
+          <div class="plan-feature"><span class="yes">✓</span>AI outreach templates</div>
+          <div class="plan-feature"><span class="yes">✓</span>Email outreach</div>
+          <div class="plan-feature"><span class="yes">✓</span>Phone &amp; click-to-call</div>
+          <div class="plan-feature"><span class="yes">✓</span>Follow-up tracking</div>
+          <div class="plan-feature"><span class="yes">✓</span>Reply tracking</div>
           <div class="plan-feature"><span class="yes">✓</span>Built-in pipeline CRM</div>
           <div class="plan-feature"><span class="yes">✓</span>Priority email support</div>
-          <div class="plan-feature"><span class="no">—</span>Google Maps scraping</div>
-          <div class="plan-feature"><span class="no">—</span>AI Website Generator</div>
+          <div class="plan-feature"><span class="no">—</span>Auto outreach sequences</div>
         </div>
         <button class="price-btn" onclick="openCheckout('instagram')">Start Free Trial</button>
       </div>
 
-      <!-- BUNDLE -->
+      <!-- AGENCY -->
       <div class="price-card featured" id="cardBundle">
         <div class="card-color bundle-bar"></div>
         <div class="plan-icon">💎</div>
-        <h3>Bundle</h3>
-        <p class="plan-desc">Maps + Instagram + AI Website Generator. The complete lead gen arsenal. Save £5/mo.</p>
+        <h3>Agency</h3>
+        <p class="plan-desc">The complete client acquisition platform. Auto outreach, team seats, and every tool you need to scale. Save £5/mo.</p>
         <div class="original-price" id="bundleOriginal"></div>
         <div class="price" id="bundlePrice">£54.99</div>
         <div class="price-period" id="bundlePeriod">per month</div>
         <div class="trial">30-DAY FREE TRIAL INCLUDED</div>
         <div class="plan-features">
-          <div class="plan-feature"><span class="yes">✓</span>Everything in Google Maps plan</div>
-          <div class="plan-feature"><span class="yes">✓</span>Everything in Instagram plan</div>
-          <div class="plan-feature"><span class="yes">✓</span>AI Website Generator (Beta)</div>
-          <div class="plan-feature"><span class="yes">✓</span>Early access to new tools</div>
-          <div class="plan-feature"><span class="yes">✓</span>Dedicated account manager</div>
+          <div class="plan-feature"><span class="yes">✓</span>Everything in Outreach plan</div>
+          <div class="plan-feature"><span class="yes">✓</span>Automated outreach sequences</div>
+          <div class="plan-feature"><span class="yes">✓</span>Team seats (£4/mo per seat)</div>
+          <div class="plan-feature"><span class="yes">✓</span>Advanced smart filters</div>
           <div class="plan-feature"><span class="yes">✓</span>Zapier &amp; webhook integrations</div>
+          <div class="plan-feature"><span class="yes">✓</span>CRM integrations (HubSpot, Salesforce)</div>
           <div class="plan-feature"><span class="yes">✓</span>Priority live chat support</div>
-          <div class="plan-feature"><span class="yes">✓</span>Custom export templates</div>
-          <div class="plan-feature"><span class="yes">✓</span>Team collaboration (coming soon)</div>
+          <div class="plan-feature"><span class="yes">✓</span>Dedicated account manager</div>
+          <div class="plan-feature"><span class="yes">✓</span>Early access to new features</div>
         </div>
         <button class="price-btn" onclick="openCheckout('bundle')">Start Free Trial</button>
       </div>
@@ -361,26 +362,27 @@ ul{list-style:none}
         <thead>
           <tr>
             <th>Feature</th>
-            <th>Maps · £30/mo</th>
-            <th>Instagram · £30/mo</th>
-            <th>Bundle · £54.99/mo</th>
+            <th>Starter · £30/mo</th>
+            <th>Outreach · £30/mo</th>
+            <th>Agency · £54.99/mo</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Google Maps Scraper</td><td class="yes">✓</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Instagram Lead Scraper</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Unlimited Searches</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Email Extraction</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Phone Number Extraction</td><td class="yes">✓</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Real-Time Verification</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Local Business Searches</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Website Analysis &amp; Scoring</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Smart Filters</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Email &amp; Phone Extraction</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
           <tr><td>CSV &amp; Excel Export</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>CRM Integrations</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
           <tr><td>Built-in Pipeline CRM</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>AI Website Generator</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Engagement Analytics</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Competitor Scraping</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>AI Outreach Templates</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Email Outreach</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Phone / Click-to-Call</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Follow-Up &amp; Reply Tracking</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Auto Outreach Sequences</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><td>Team Seats (£4/mo per seat)</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><td>CRM Integrations (HubSpot etc)</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><td>Zapier &amp; Webhooks</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
           <tr><td>Dedicated Account Manager</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Early Access to New Tools</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
           <tr><td>Priority Support</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
           <tr><td>30-Day Free Trial</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
         </tbody>
@@ -420,8 +422,8 @@ ul{list-style:none}
         <div class="faq-answer"><p>Yes! Many agencies use ClientSniper to generate leads for their clients. Each plan is tied to your account — scrape as much as you need and export leads for any number of clients.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><span>What's the difference between Maps and Instagram plans?</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer"><p>The Maps plan scrapes Google Maps listings (business name, phone, email, rating, website). The Instagram plan scrapes Instagram profiles and hashtags (bio email, follower count, engagement). The Bundle gives you both plus the AI Website Generator.</p></div>
+        <div class="faq-question"><span>What's the difference between Starter and Outreach plans?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>The Starter plan gives you lead discovery, website analysis, opportunity scoring, and smart filters — everything you need to find the right businesses to target. The Outreach plan adds AI-generated outreach templates, email campaigns, phone click-to-call, and follow-up tracking so you can contact those leads and close them. The Agency plan adds auto sequences, team seats, and CRM integrations.</p></div>
       </div>
     </div>
   </div>
@@ -431,8 +433,8 @@ ul{list-style:none}
 <section class="cta-banner">
   <div class="container reveal">
     <div class="section-tag">Ready to Start?</div>
-    <h2>Your First 500 Leads<br>Are 5 Minutes Away</h2>
-    <p>Pick a plan, enter your search, and watch verified leads roll in. No credit card charged during your trial.</p>
+    <h2>Your First Client<br>Is 5 Minutes Away</h2>
+    <p>Pick a plan, enter a city and niche, and start finding businesses that need your services. No credit card charged during your trial.</p>
     <div class="cta-actions">
       <button class="btn-primary" onclick="openCheckout('bundle')">Start Bundle Free Trial →</button>
       <a href="features.html" class="btn-secondary">Explore All Features</a>
@@ -445,18 +447,18 @@ ul{list-style:none}
   <div class="footer-grid">
     <div>
       <div class="footer-brand">Client<span style="color:var(--text)">Sniper</span></div>
-      <p class="footer-brand-text">Precision lead generation for modern businesses. Scrape verified leads from Google Maps &amp; Instagram in minutes.</p>
+      <p class="footer-brand-text">The client acquisition platform for freelancers and agencies. Find local businesses that need better websites and win more clients.</p>
       <div class="footer-social">
         <a href="javascript:void(0)" aria-label="Twitter" title="Coming soon">𝕏</a>
         <a href="javascript:void(0)" aria-label="LinkedIn" title="Coming soon">in</a>
-        <a href="javascript:void(0)" aria-label="Instagram" title="Coming soon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
         <a href="javascript:void(0)" aria-label="YouTube" title="Coming soon">▶</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Product</h4>
-      <a href="index.html#products">Google Maps Scraper</a>
-      <a href="index.html#insta-preview">Instagram Scraper</a>
+      <a href="index.html#products">Lead Discovery</a>
+      <a href="index.html#outreach-preview">Outreach Tools</a>
       <a href="features.html">All Features</a>
       <a href="payment.html">Pricing</a>
     </div>
@@ -504,7 +506,7 @@ function closeDrawer(){burger.classList.remove('open');drawer.classList.remove('
 let isYearly = false;
 const prices = {
   maps:     { monthly: '£30',    yearly: '£288',   monthlyEquiv: '£24/mo',   monthlyVal: 30,    yearlyVal: 288 },
-  insta:    { monthly: '£30',    yearly: '£288',   monthlyEquiv: '£24/mo',   monthlyVal: 30,    yearlyVal: 288 },
+  outreach: { monthly: '£30',    yearly: '£288',   monthlyEquiv: '£24/mo',   monthlyVal: 30,    yearlyVal: 288 },
   bundle:   { monthly: '£54.99', yearly: '£527.88', monthlyEquiv: '£43.99/mo', monthlyVal: 54.99, yearlyVal: 527.88 }
 };
 
@@ -522,9 +524,9 @@ function updatePrices(){
   document.getElementById('mapPeriod').textContent = isYearly ? 'per year (' + prices.maps.monthlyEquiv + ')' : 'per month';
   document.getElementById('mapOriginal').textContent = isYearly ? '£360/yr' : '';
   
-  // Instagram
-  document.getElementById('instaPrice').textContent = isYearly ? prices.insta.yearly : prices.insta.monthly;
-  document.getElementById('instaPeriod').textContent = isYearly ? 'per year (' + prices.insta.monthlyEquiv + ')' : 'per month';
+  // Outreach
+  document.getElementById('instaPrice').textContent = isYearly ? prices.outreach.yearly : prices.outreach.monthly;
+  document.getElementById('instaPeriod').textContent = isYearly ? 'per year (' + prices.outreach.monthlyEquiv + ')' : 'per month';
   document.getElementById('instaOriginal').textContent = isYearly ? '£360/yr' : '';
   
   // Bundle
